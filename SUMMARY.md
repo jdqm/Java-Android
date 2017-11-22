@@ -11,8 +11,8 @@
     * [2.observer](Pattern/observer.md)
     * [3.decorator](Pattern/decorator.md)
     * [4.singleton](Pattern/singleton.md)
-    * [6.command](Pattern/command.md)
-    * [7.abdapter](Pattern/abdapter.md)
+    * [5.command](Pattern/command.md)
+    * [6.abdapter](Pattern/abdapter.md)
 
 
 
