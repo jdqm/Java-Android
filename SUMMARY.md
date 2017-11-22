@@ -1,27 +1,17 @@
-# 目录
+# Summary
 
 * [Introduction](README.md)
 * [Part I - Java](Java/README.md)
-    * [1.多线程](Java/multithread.md)
-    * [2.抽象类与接口](Java/abstract-interface.md)
+  * [1.多线程](Java/multithread.md)
+  * [2.抽象类与接口](Java/abstract-interface.md)
+  * [3.内部类](Java/inner-class.md)
 * [Part II - Android](Android/README.md)
-    * [1.service](Android/service.md)
+  * [1.service](Android/service.md)
 * [Part III - 设计模式](Pattern/README.md)
-    * [1.strategy](Pattern/strategy.md)
-    * [2.observer](Pattern/observer.md)
-    * [3.decorator](Pattern/decorator.md)
-    * [4.singleton](Pattern/singleton.md)
-    * [5.command](Pattern/command.md)
-    * [6.abdapter](Pattern/abdapter.md)
-
-
-
-
-
-
-
-
-
-
-
+  * [1.strategy](Pattern/strategy.md)
+  * [2.observer](Pattern/observer.md)
+  * [3.decorator](Pattern/decorator.md)
+  * [4.singleton](Pattern/singleton.md)
+  * [5.command](Pattern/command.md)
+  * [6.abdapter](Pattern/abdapter.md)
 
