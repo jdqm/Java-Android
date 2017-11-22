@@ -5,6 +5,7 @@
   * [1.多线程](Java/multithread.md)
   * [2.抽象类与接口](Java/abstract-interface.md)
   * [3.内部类](Java/inner-class.md)
+  * [3.集合框架](Java/collection.md)
 * [Part II - Android](Android/README.md)
   * [1.service](Android/service.md)
 * [Part III - 设计模式](Pattern/README.md)
