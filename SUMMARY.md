@@ -7,7 +7,7 @@
 * [Part II - Android](Android/README.md)
     * [1.service](Android/service.md)
 * [Part III - 设计模式](Pattern/README.md)
-    * [1.strategy](Pattern/strateg.md)
+    * [1.strategy](Pattern/strategy.md)
     * [2.observer](Pattern/observer.md)
     * [3.decorator](Pattern/decorator.md)
     * [4.singleton](Pattern/singleton.md)
