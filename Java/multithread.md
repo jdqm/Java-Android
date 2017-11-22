@@ -1,7 +1,7 @@
+ï»¿
+## 1.ç†è§£synchronizedçš„å«ä¹‰ã€æ˜Žç¡®synchronizedå…³é”®å­—ä¿®é¥°æ™®é€šæ–¹æ³•ã€é™æ€æ–¹æ³•å’Œä»£ç å—æ—¶é”å¯¹è±¡çš„å·®å¼‚ã€‚
 
-#1.Àí½âsynchronizedµÄº¬Òå¡¢Ã÷È·synchronized¹Ø¼ü×ÖÐÞÊÎÆÕÍ¨·½·¨¡¢¾²Ì¬·½·¨ºÍ´úÂë¿éÊ±Ëø¶ÔÏóµÄ²îÒì¡£
-
-ÓÐÈçÏÂÒ»¸öÀàA
+æœ‰å¦‚ä¸‹ä¸€ä¸ªç±»A
 ```
 class A {
     public synchronized void a() {
@@ -10,19 +10,19 @@ class A {
     }
 }
 ```
-È»ºó´´½¨Á½¸ö¶ÔÏó
+ç„¶åŽåˆ›å»ºä¸¤ä¸ªå¯¹è±¡
 ```
 A a1 = new A();
 A a2 = new A();
 ```
-È»ºóÔÚÁ½¸öÏß³ÌÖÐ²¢·¢·ÃÎÊÈçÏÂ´úÂë£º
+ç„¶åŽåœ¨ä¸¤ä¸ªçº¿ç¨‹ä¸­å¹¶å‘è®¿é—®å¦‚ä¸‹ä»£ç ï¼š
 ```
 Thread1                       Thread2
 a1.a();                           a2.a();
 ```
-ÇëÎÊ¶þÕßÄÜ·ñ¹¹³ÉÏß³ÌÍ¬²½£¿
+è¯·é—®äºŒè€…èƒ½å¦æž„æˆçº¿ç¨‹åŒæ­¥ï¼Ÿ
 
-Èç¹ûAµÄ¶¨ÒåÊÇÏÂÃæÕâÖÖÄØ£¿
+å¦‚æžœAçš„å®šä¹‰æ˜¯ä¸‹é¢è¿™ç§å‘¢ï¼Ÿ
 ```
 class A {
     public static synchronized void a() {
@@ -31,37 +31,30 @@ class A {
     }
 }
 ```
-´ð£ºÄÜ²»ÄÜÊµÏÖÏß³ÌÍ¬²½£¬Ö÷Òª¿´ËüÃÇÊÇ·ñÔÚ¾ºÕùÍ¬Ò»¸öÍ¬²½¼àÊÓÆ÷£¬JavaÖÐµÄÈÎºÎ¶ÔÏó¶¼¿ÉÒÔ×÷ÎªÍ¬²½¼àÊÓÆ÷£¨Ëø¶ÔÏó£©
+ç­”ï¼šèƒ½ä¸èƒ½å®žçŽ°çº¿ç¨‹åŒæ­¥ï¼Œä¸»è¦çœ‹å®ƒä»¬æ˜¯å¦åœ¨ç«žäº‰åŒä¸€ä¸ªåŒæ­¥ç›‘è§†å™¨ï¼ŒJavaä¸­çš„ä»»ä½•å¯¹è±¡éƒ½å¯ä»¥ä½œä¸ºåŒæ­¥ç›‘è§†å™¨ï¼ˆé”å¯¹è±¡ï¼‰
 
-- ¶ÔÓÚÊµÀýÍ¬²½·½·¨£¬ÒþÊ½ËøÊÇµ±Ç°ÊµÀý¶ÔÏó£»
+- å¯¹äºŽå®žä¾‹åŒæ­¥æ–¹æ³•ï¼Œéšå¼é”æ˜¯å½“å‰å®žä¾‹å¯¹è±¡ï¼›
 
-- ¶ÔÓÚ¾²Ì¬Í¬²½·½·¨£¬ÒþÊ½ËøÊÇÀàËù¶ÔÓ¦µÄjava.lang.Class¶ÔÏó£»
+- å¯¹äºŽé™æ€åŒæ­¥æ–¹æ³•ï¼Œéšå¼é”æ˜¯ç±»æ‰€å¯¹åº”çš„java.lang.Classå¯¹è±¡ï¼›
 
-- ¶ÔÓÚÍ¬²½´úÂë¿é£¬ËøÊÇsynchonized(obj)À¨ºÅÀïÅäÖÃµÄ¶ÔÏó¡£
+- å¯¹äºŽåŒæ­¥ä»£ç å—ï¼Œé”æ˜¯synchonized(obj)æ‹¬å·é‡Œé…ç½®çš„å¯¹è±¡ã€‚
 
 ```
 Thread1             Thread2          
 a1.a();             a2.a();
  
 ```
-Èç¹ûa()ÊÇÆÕÍ¨µÄÍ¬²½·½·¨£¬Thread1µÄÍ¬²½¼àÊÓÆ÷ÊÇa1£¬¶øThread2µÄÍ¬²½¼àÊÓÆ÷ÊÇa2£¬¼àÊÓÆ÷²»Í¬£¬ÎÞ¾ºÕù¿ÉÑÔ£¬ËùÒÔ²»¹¹³ÉÏß³ÌÍ¬²½£¬ÏÂÃæÕâÖÖ·½Ê½¿É¹¹³ÉÏß³ÌÍ¬²½¡£
+å¦‚æžœa()æ˜¯æ™®é€šçš„åŒæ­¥æ–¹æ³•ï¼ŒThread1çš„åŒæ­¥ç›‘è§†å™¨æ˜¯a1ï¼Œè€ŒThread2çš„åŒæ­¥ç›‘è§†å™¨æ˜¯a2ï¼Œç›‘è§†å™¨ä¸åŒï¼Œæ— ç«žäº‰å¯è¨€ï¼Œæ‰€ä»¥ä¸æž„æˆçº¿ç¨‹åŒæ­¥ï¼Œä¸‹é¢è¿™ç§æ–¹å¼å¯æž„æˆçº¿ç¨‹åŒæ­¥ã€‚
 
 ```
 Thread1             Thread2          
 a1.a();             a1.a();
 ```
 
-¶øÈç¹û½«·½·¨¶¨ÒåÎª¾²Ì¬Í¬²½·½·¨£¬Thread1¡¢Thread2µÄÍ¬²½¼àÊÓ¶¼ÊÇÀàAËù¶ÔÓ¦µÄClass¶ÔÏó£¬ÔÚÍ¬Ò»¸öÐéÄâ»úÖÐ£¬Í¬Ò»¸öÀàµÄClass¶ÔÏóÊÇÎ¨Ò»µÄ£¬ËùÒÔ¹¹³ÉÏß³ÌÍ¬²½¡£
+è€Œå¦‚æžœå°†æ–¹æ³•å®šä¹‰ä¸ºé™æ€åŒæ­¥æ–¹æ³•ï¼ŒThread1ã€Thread2çš„åŒæ­¥ç›‘è§†éƒ½æ˜¯ç±»Aæ‰€å¯¹åº”çš„Classå¯¹è±¡ï¼Œåœ¨åŒä¸€ä¸ªè™šæ‹Ÿæœºä¸­ï¼ŒåŒä¸€ä¸ªç±»çš„Classå¯¹è±¡æ˜¯å”¯ä¸€çš„ï¼Œæ‰€ä»¥æž„æˆçº¿ç¨‹åŒæ­¥ã€‚
 
-ÉÏÃæÕâÁ½ÖÖËµ·¨»¹´æÔÚÒ»¸öÂ©¶´£¬Ã»ÓÐËµÊÇ²»ÊÇÔÚÍ¬Ò»¸ö½ø³ÌÖÐ¡£ÔÚAndroidÖÐÃ¿¸ö½ø³Ì¶ÔÓ¦×ÅÒ»¸ö²»Í¬µÄÐéÄâ»ú£¬Ã¿¸öÐéÄâ»úµÄÄÚ´æµØÖ·¿Õ¼ä¶¼ÊÇ¶ÀÁ¢µÄ£¬Èç¹ûThread1¡¢Thread2ÊôÓÚ²»Í¬µÄ½ø³Ì£¬ÀàAËù¶ÔÓ¦µÄClass¶ÔÏóÒ²ÊÇÁ½¸ö²»Í¬µÄÊµÀý¡£
+ä¸Šé¢è¿™ä¸¤ç§è¯´æ³•è¿˜å­˜åœ¨ä¸€ä¸ªæ¼æ´žï¼Œæ²¡æœ‰è¯´æ˜¯ä¸æ˜¯åœ¨åŒä¸€ä¸ªè¿›ç¨‹ä¸­ã€‚åœ¨Androidä¸­æ¯ä¸ªè¿›ç¨‹å¯¹åº”ç€ä¸€ä¸ªä¸åŒçš„è™šæ‹Ÿæœºï¼Œæ¯ä¸ªè™šæ‹Ÿæœºçš„å†…å­˜åœ°å€ç©ºé—´éƒ½æ˜¯ç‹¬ç«‹çš„ï¼Œå¦‚æžœThread1ã€Thread2å±žäºŽä¸åŒçš„è¿›ç¨‹ï¼Œç±»Aæ‰€å¯¹åº”çš„Classå¯¹è±¡ä¹Ÿæ˜¯ä¸¤ä¸ªä¸åŒçš„å®žä¾‹ã€‚
 
-Õâ¸öÎÊÌâ¿ÉÒÔÑÓÉì³ö³öÒ»¸ö¸üµ×²ãÒ»µãµÄÎÊÌâ£ºsynchronizedÊÇÈçºÎÊµÏÖÒ»¸öÏß³Ì»ñµÃÍ¬²½Ëøºó£¬ÆäËûµÄÏß³Ì¾Í²»ÄÜ»ñµÃµÄ£¬»òÕßÊÇËµ¶ÔÏóËøµÄ×´Ì¬ÐÅÏ¢´æÔÚÄÄÀï£¿
+è¿™ä¸ªé—®é¢˜å¯ä»¥å»¶ä¼¸å‡ºå‡ºä¸€ä¸ªæ›´åº•å±‚ä¸€ç‚¹çš„é—®é¢˜ï¼šsynchronizedæ˜¯å¦‚ä½•å®žçŽ°ä¸€ä¸ªçº¿ç¨‹èŽ·å¾—åŒæ­¥é”åŽï¼Œå…¶ä»–çš„çº¿ç¨‹å°±ä¸èƒ½èŽ·å¾—çš„ï¼Œæˆ–è€…æ˜¯è¯´å¯¹è±¡é”çš„çŠ¶æ€ä¿¡æ¯å­˜åœ¨å“ªé‡Œï¼Ÿ
 
-¶ÔÏóËøµÄ×´Ì¬ÐÅÏ¢±£´æÔÚ¶ÔÏóµÄÍ·ÐÅÏ¢ÖÐµÄMark WordÖÐ£¬Ïà¹ØµÄ»¹ÓÐLock Record£¬µ±±»Ëø¶¨¡¢½âËøµÈÊ±ºòÕâÐ©×´Ì¬ÐÅÏ¢¾Í»á¸Ä±ä£¬µ±È»ÁË£¬ÕâÐ©×´Ì¬ÐÅÏ¢µÄ¸Ä±äÒ²Òª±£Ö¤Ô­×ÓÐÔ£¬·ñÔòÒ²ÊÇ²»°²È«µÄ¡£ÏêÇé¿ÉÒÆ²½¡¶ÉîÈëÀí½âJavaÐéÄâ»ú£ºJVM¸ß¼¶ÌØÐÔÓë×î¼ÑÊµ¼ù¡·µÚÎå²¿·Ö¡£
-
-
-
-
-
-
-
+å¯¹è±¡é”çš„çŠ¶æ€ä¿¡æ¯ä¿å­˜åœ¨å¯¹è±¡çš„å¤´ä¿¡æ¯ä¸­çš„Mark Wordä¸­ï¼Œç›¸å…³çš„è¿˜æœ‰Lock Recordï¼Œå½“è¢«é”å®šã€è§£é”ç­‰æ—¶å€™è¿™äº›çŠ¶æ€ä¿¡æ¯å°±ä¼šæ”¹å˜ï¼Œå½“ç„¶äº†ï¼Œè¿™äº›çŠ¶æ€ä¿¡æ¯çš„æ”¹å˜ä¹Ÿè¦ä¿è¯åŽŸå­æ€§ï¼Œå¦åˆ™ä¹Ÿæ˜¯ä¸å®‰å…¨çš„ã€‚è¯¦æƒ…å¯ç§»æ­¥ã€Šæ·±å…¥ç†è§£Javaè™šæ‹Ÿæœºï¼šJVMé«˜çº§ç‰¹æ€§ä¸Žæœ€ä½³å®žè·µã€‹ç¬¬äº”éƒ¨åˆ†ã€‚
