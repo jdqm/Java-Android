@@ -1,118 +1,68 @@
 # 多线程1.1
 
-1.理解synchronized的含义、明确synchronized关键字修饰普通方法、静态方法和代码块时锁对象的差异。
+#1.理解synchronized的含义、明确synchronized关键字修饰普通方法、静态方法和代码块时锁对象的差异。
 
 有如下一个类A
-
-\`\`\`
-
+```
 class A {
-
-    public synchronized void a\(\) {
-
+    public synchronized void a() {
     }
-
-    public synchronized void b\(\) {
-
+    public synchronized void b() {
     }
-
 }
-
-\`\`\`
-
+```
 然后创建两个对象
-
-\`\`\`
-
-A a1 = new A\(\);
-
-A a2 = new A\(\);
-
-\`\`\`
-
+```
+A a1 = new A();
+A a2 = new A();
+```
 然后在两个线程中并发访问如下代码：
-
-\`\`\`
-
+```
 Thread1                       Thread2
-
-a1.a\(\);                           a2.a\(\);
-
-\`\`\`
-
+a1.a();                           a2.a();
+```
 请问二者能否构成线程同步？
 
-
-
 如果A的定义是下面这种呢？
-
-\`\`\`
-
+```
 class A {
-
-    public static synchronized void a\(\) {
-
+    public static synchronized void a() {
     }
-
-    public static synchronized void b\(\) {
-
+    public static synchronized void b() {
     }
-
 }
-
-\`\`\`
-
+```
 答：能不能实现线程同步，主要看它们是否在竞争同一个同步监视器，Java中的任何对象都可以作为同步监视器（锁对象）
-
-
 
 - 对于实例同步方法，隐式锁是当前实例对象；
 
-
-
 - 对于静态同步方法，隐式锁是类所对应的java.lang.Class对象；
 
+- 对于同步代码块，锁是synchonized(obj)括号里配置的对象。
 
-
-- 对于同步代码块，锁是synchonized\(obj\)括号里配置的对象。
-
-
-
-\`\`\`
-
+```
 Thread1             Thread2          
-
-a1.a\(\);             a2.a\(\);
-
+a1.a();             a2.a();
  
+```
+如果a()是普通的同步方法，Thread1的同步监视器是a1，而Thread2的同步监视器是a2，监视器不同，无竞争可言，所以不构成线程同步，下面这种方式可构成线程同步。
 
-\`\`\`
-
-如果a\(\)是普通的同步方法，Thread1的同步监视器是a1，而Thread2的同步监视器是a2，监视器不同，无竞争可言，所以不构成线程同步，下面这种方式可构成线程同步。
-
-
-
-\`\`\`
-
+```
 Thread1             Thread2          
-
-a1.a\(\);             a1.a\(\);
-
-\`\`\`
+a1.a();             a1.a();
+```
 
 而如果将方法定义为静态同步方法，Thread1、Thread2的同步监视都是类A所对应的Class对象，在同一个虚拟机中，同一个类的Class对象是唯一的，所以构成线程同步。
 
-
-
 上面这两种说法还存在一个漏洞，没有说是不是在同一个进程中。在Android中每个进程对应着一个不同的虚拟机，每个虚拟机的内存地址空间都是独立的，如果Thread1、Thread2属于不同的进程，类A所对应的Class对象也是两个不同的实例。
-
-
 
 这个问题可以延伸出出一个更底层一点的问题：synchronized是如何实现一个线程获得同步锁后，其他的线程就不能获得的，或者是说对象锁的状态信息存在哪里？
 
-
-
 对象锁的状态信息保存在对象的头信息中的Mark Word中，相关的还有Lock Record，当被锁定、解锁等时候这些状态信息就会改变，当然了，这些状态信息的改变也要保证原子性，否则也是不安全的。详情可移步《深入理解Java虚拟机：JVM高级特性与最佳实践》第五部分。
+
+
+
+
 
 
 
