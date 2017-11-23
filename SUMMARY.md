@@ -1,4 +1,4 @@
-# 目录
+# Summary
 
 * [Introduction](README.md)
 * [Part I - Java](Java/README.md)
@@ -13,6 +13,7 @@
   * [2.service](Android/service.md)
   * [3.broadcastReceicer](Android/broadcast-receiver.md)
   * [4.contentProvider](Android/content-provider.md)
+  * [5.优化相关](Android/performance.md)
 * [Part III - 设计模式](Pattern/README.md)
   * [1.strategy](Pattern/strategy.md)
   * [2.observer](Pattern/observer.md)
