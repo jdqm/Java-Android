@@ -1,3 +1,7 @@
+![collection.png](http://upload-images.jianshu.io/upload_images/3631399-e677d55ed3cdf036.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![map.png](http://upload-images.jianshu.io/upload_images/3631399-e436e5797306140a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ##1.ArrayList
 >Resizable-array implementation of the <tt>List</tt> interface.  Implements all optional list operations, and permits all elements, including null.  In addition to implementing the List interface,this class provides methods to manipulate the size of the array that is used internally to store the list.  (This class is roughly equivalent to Vector, except that it is unsynchronized.
 
