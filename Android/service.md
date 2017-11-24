@@ -1,6 +1,6 @@
 清晰地理解Service。
 1、Service的start和bind状态有什么区别？
-答：start状态下Service的生命周期与启动它的context没有关联，需要调用它的stopSelf()或者其他Client调用stopService()来停止；而bind状态下需要将绑定到服务的Client解绑才能停止。
+答：start状态下Service的生命周期与启动它的Context没有关联，需要调用它的stopSelf()或者其他Client调用stopService()来停止；而bind状态下需要将绑定到服务的Client解绑才能停止。
 
 2、同一个Service，先startService，然后再bindService，如何把它停止掉？
 答：要分别调用stop和unbind才能停止掉。
