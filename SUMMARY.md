@@ -7,7 +7,7 @@
   * [2.抽象类与接口](Java/abstract-interface.md)
   * [3.内部类](Java/inner-class.md)
   * [3.集合框架](Java/collection.md)
-  * [3.泛型](Java/collection.md)
+  * [3.泛型](Java/genericity.md)
 * [Part II - Android](Android/README.md)
   * [1.activity](Android/activity.md)
   * [2.service](Android/service.md)
