@@ -6,4 +6,6 @@
 
 当系统资源不足时，就会按照上面的优先级，优先回收优先级较低的Activity，以释放资源供系统使用。
 
-#2.
+##2.Activity的启动模式有哪几种，分别用于什么场景？
+
+##3、清晰地描述下onNewIntent和onConfigurationChanged这两个生命周期方法的场景？
