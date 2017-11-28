@@ -22,4 +22,4 @@
   * [4.singleton](Pattern/singleton.md)
   * [5.command](Pattern/command.md)
   * [6.abdapter](Pattern/abdapter.md)
-
+* [Part IV - 有意思的问题](Funny/README.md)
