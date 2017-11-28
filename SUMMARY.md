@@ -24,3 +24,4 @@
   * [6.abdapter](Pattern/abdapter.md)
 * [Part IV - 有意思的问题](Funny/README.md)
   * [1.烧绳子](Funny/rope.md)
+  * [2.杯子倒水问题(Funt/water.md)]
