@@ -49,3 +49,19 @@ public class EagerlySingleton {
 
 
 android实际APP 开发中用到的 账号信息对象管理， 数据库对象（SQLiteOpenHelper）等都会用到单例模式
+
+#Android中常见的单例场景
+#####1.LocalBroadcastManager
+```
+private static final Object mLock = new Object();
+private static LocalBroadcastManager mInstance;
+
+public static LocalBroadcastManager getInstance(Context context) {
+    synchronized (mLock) {
+        if (mInstance == null) {
+            mInstance = new LocalBroadcastManager(context.getApplicationContext());
+        }
+        return mInstance;
+    }
+}
+```    
