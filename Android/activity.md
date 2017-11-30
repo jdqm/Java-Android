@@ -22,7 +22,7 @@
 - category：Intent中可以不包含category，但是一旦包含，就必须和目标组件IntentFilter中的category中的任意一个相同，否则匹配失败，值得注意的一点是startActivity()、startActivityForResult()都会默认为Intent添加```<category android:name="android.intent.category.DEFAULT"/>```，所以如果你的Activity如果要支持隐式启动，那IntentFilter就必须包含这个category。
 - data：data部分分为mimeType和URI两部分，mimeType如：image/png、text/plain等，URI就相对复杂一些：
 ```
-<scheme>://<host>:<port>/[<paht>|<pathPrefix>|<pathPattern>]
+<schema>://<host>:<port>/[<paht>|<pathPrefix>|<pathPattern>]
 ```
 
 例如：
@@ -32,7 +32,7 @@ http://www.baidu.com:80/test/info
 ```
 匹配规则是mimeType和URI都要匹配，其中pathPattern是具有统配符的，例如```image/*```支持所有的图片，image/png是可以和它匹配的。
 
-URI中的scheme默认为content、file，例如：
+URI中的schema默认为content、file，例如：
 ```
 <intent-filter>
     <action android:name="jdqm.intent.action.SecondActivity"/>
@@ -49,7 +49,7 @@ intent.setDataAndType(Uri.parse("content://test"), "image/png");
 //intent.setDataAndType(Uri.parse("file://test"), "image/png");
 startActivity(intent);
 ```
-但scheme是其他的就会报错说找不到对应的Activity，例如
+但schema是其他的就会报错说找不到对应的Activity，例如
 ```
 intent.setDataAndType(Uri.parse("http://test"), "image/png");
 ```
