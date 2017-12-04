@@ -10,12 +10,15 @@
 
 | 启动模式 | 特点 | 应用场景 |
 | --- | --- | --- |
-| standard | 标准模式，也是默认的模式，每次启动该Activity都会创建一个新的实例并压入栈顶。 |  |
-| singleTop | 栈顶复用模式，当要启动的Activity实例位于栈顶时，不会创建新的实例，而是复用栈顶的实例，但会回调- onNewIntent方法，其他情况和标准模式一致。 |  |
-| singleTask | 栈内服用模式，自带clearTop效果，如果目标任务栈中存在改Activity实例，不管是否位于栈顶都会复用，复用时会将它之上的Activity全部出栈以使自己位于栈顶，并调用它们的onDestroy方法。 需要注意的一点是复用的时候并不会更新activity的mIntent，即通过getIntent得到的是第一次启动时的Intent，除非你在onNewIntent中通过setIntent来修改|  |
-| singleInstance | 单实例、独立任务栈模式，这种模式下该Activity独占一个任务栈，它永远位于栈顶。 | ①通话界面 |
+| standard-标准模式|系统的默认的模式，每次启动该Activity都会创建一个新的实例并压入栈顶，如果使用的Context是Acitivity以外的Context如ApplicationContext，这个时候是没有任务栈的，需要指定FLAG_ACTIVITY_NEW_TASK这个标记位创建一个新的任务栈| 没有什么特殊需求就是这种模式|
+| singleTop-栈顶复用模式|当要启动的Activity实例位于栈顶时，不会创建新的实例，而是复用栈顶的实例，但会回调onNewIntent方法，其他情况和标准模式一致。 | 接收通知启动的内容显示页面，当收到多条新闻推送时，根据传进来的Intent显示不同的内容，不需要创建多个实例 |
+| singleTask-栈内服用模式|如果目标任务栈中存在改Activity实例，不管是否位于栈顶都会复用，前台Acitivity要处于栈顶，所以复用时为了让其在栈顶，就要将其上面的Activity全部出栈，所以该模式自带clearTop属性。 需要注意的一点是复用的时候并不会更新activity的mIntent，即通过getIntent得到的是第一次启动时的Intent，除非你在onNewIntent中通过setIntent来修改| 主界面，例如浏览器的主界面，不管启动多少次，之后创建一次，其余情况回调onNewIntent，并且会清空主界面以上的页面 |
+| singleInstance-单实例模式 |这种模式下Activity只能单独在一个任务栈，所以它永远位于栈顶。 | 通话界面、闹钟响铃页面|
 
 ##### 3.清晰地描述下onNewIntent和onConfigurationChanged这两个生命周期方法的场景？
+- onNewIntent：在singleTop、singleTask、singleInstance模式下，若发生重用Activity实例，则会回调onNewIntent，在onNewIntent中可以通过setIntent来刷新getIntent的到数据。
+- onConfigurationChanged：在App运行期间，若系统的配置信息发生了改变，例如屏幕方向、语言、键盘参数等信息发生了改变，系统默认的处理方式是销毁当前Activity，但有些情况我们希望这样做，例如在视频播放时横竖屏切换并不希望重新创建该Activity，这是我们需要在AndroidManifest.xml中<activity>标签中声明android:configChanges属性，例如希望横竖屏切换不销毁重建通常会声明这些属性： ```screenSize|orientation|keyboardHidden。```。这个时候系统会回调onConfigurationChanged来告诉我们系统配置发生了变化，onConfigurationChanged参数中包含一个Configuration对象，可以从中读取最新的配置信息来适配UI。
+>**注：从API13开始屏幕旋转 screenSize也会发生改变。**
 
 ##### 4.IntentFilter的匹配规则
 - action：Intent必须包含action，且与目标组件中的任意一个ation匹配。
