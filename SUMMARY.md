@@ -15,6 +15,7 @@
   * [3.broadcastReceicer](Android/broadcast-receiver.md)
   * [4.contentProvider](Android/content-provider.md)
   * [5.优化相关](Android/performance.md)
+  * [6.适配相关](Android/adapt)
 * [Part III - 设计模式](Pattern/README.md)
   * [1.strategy](Pattern/strategy.md)
   * [2.observer](Pattern/observer.md)
