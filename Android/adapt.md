@@ -1,4 +1,4 @@
-Android的适配问题有很多，主要分为如下几类。
+Android的适配问题有很多，主要分为如下几类
 
 ####1.UI适配
 参考文章：http://www.jianshu.com/p/ec5a1a30694b
