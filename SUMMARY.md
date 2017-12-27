@@ -17,6 +17,7 @@
   * [5.View相关知识](Android/view.md)
   * [6.优化相关](Android/performance.md)
   * [7.适配相关](Android/adapt.md)
+  * [Gradle for android](Android/gradle.md)
 * [Part III - 设计模式](Pattern/README.md)
   * [1.strategy](Pattern/strategy.md)
   * [2.observer](Pattern/observer.md)
