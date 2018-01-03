@@ -42,3 +42,5 @@ public class App extends Application {
 }
 ```
 >note: 不要忘了在AndroidManifest.xml中注册Application。
+
+目前有一些大厂都有向外提供一些日志服务系统，例如腾讯的Bugly、MTA等等。
