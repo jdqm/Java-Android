@@ -1,4 +1,5 @@
 当应用出现未捕获异常时，设备通常会弹出一个停止运行的的对话框，当点击确定后，就会关闭出现异常的应用。但是你会发现，现在有的应用出现异常时时闪退，不再弹窗那个不太美观的停止运行Dialog，这点除了在系统上改进以外，我们也可以在应用层接管这个处理流程。
+
 (1)实现一个 UncaughtExceptionHandler 子类，在 uncaughtException(Thread, Throwable) 方法中实现自己的处理逻辑。
 ```
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
