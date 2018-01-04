@@ -19,6 +19,7 @@
   * [7.适配相关](Android/adapt.md)
   * [Gradle for android](Android/gradle.md)
   * [CrashHandler](Android/crash.md)
+  * [内存泄漏](Android/memery-leank.md)
 * [Part III - 设计模式](Pattern/README.md)
   * [1.strategy](Pattern/strategy.md)
   * [2.observer](Pattern/observer.md)
