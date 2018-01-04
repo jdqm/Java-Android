@@ -85,12 +85,80 @@ D/LeakCanary: * com.jdqm.leakdemo.MainActivity has leaked:
 ![Android profiler](/Resource/Android_profiler.png)
 
 
-这种方式需要自己查看引用信息，通常泪说都是查看占用比较大的。
+这种方式需要自己查看引用信息，通常来说都是查看占用比较大的。
 
 
 
+###非静态内部类引起的内存泄漏
+```
+public class HandlerLeakActivity extends AppCompatActivity {
+
+    private MyHandler myHandler = new MyHandler();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_handler_leak);
+        //发送一个延时10秒的消息，这个时候Message被投递到MessageQueue中，而Message的target引用了Handler，
+        //该Handler又是非静态内部类，持有外部类的引用，从而导致Activity无法回收
+        myHandler.sendEmptyMessageDelayed(0, 10000);
+    }
+
+    class MyHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //移除消息队列中的对应的消息，释放Handler，从而释放Activity
+        //myHandler.removeMessages(0);
+    }
+}
+```
+
+可以将其改为静态内部类，以避免此问题。
 
 
+```
+public class StaticHandlerActivity extends AppCompatActivity {
+
+    private MyHandler myHandler = new MyHandler(this);
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_static_handler);
+        //同样的演示10秒，在onDestroy中也没有移除消息，但因为Handler对Activity的引用为弱引用，弱引用的对象是可以被回收的，所以不会导致其泄漏
+        myHandler.sendEmptyMessageDelayed(0, 10000);
+    }
+
+    static class MyHandler extends Handler {
+        private WeakReference<Activity> mActivity;
+
+        public MyHandler(Activity Activity) {
+            this.mActivity = new WeakReference<>(Activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            StaticHandlerActivity activity = (StaticHandlerActivity) mActivity.get();
+            if (activity != null) {
+                activity.setText();
+            }
+        }
+    }
+
+    public void setText() {
+        //
+    }
+}
+```
+这种情况下，即使在onDestroy中没有移除消息队列中的消息，也不会造成内存泄漏。
 
 
 
