@@ -1,4 +1,7 @@
 内存泄漏发生在堆内存中，指的是已经没有用的对象，仍然被引用，导致GC无法回收。在平常的开发中，应该如何来处理内存泄漏问题？第一，我们应该尽量避免写出有内存泄漏的代码，但这个对开发人员的要求较高。第二，如何利用工具来检测现有的代码是否存在内存泄漏，推荐使用[LeakCanary:https://github.com/square/leakcanary][1]，下面是一个例子，先制造一个内存泄漏的场景，看看LeakCanary是如何展示的：
+
+###LeakCanary
+
 ```
 public interface TaskListener {}
 ```
@@ -77,7 +80,9 @@ D/LeakCanary: * com.jdqm.leakdemo.MainActivity has leaked:
 在这个例子中，TaskManager.instance静态成员，它的生命周期比Activity长，关闭Activity时，TaskManager.instance中的taskListeners集合保存了该Activity的引用，导致无法回收而泄漏。
 
 
+###在Android Studio中，底部有一个Android Profiler也可以查看
 
+![Android profiler](/Resource/Android_profiler.png)
 
 
 
