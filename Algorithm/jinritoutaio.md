@@ -8,7 +8,7 @@
  *
  * @param array Input a N*N Array
  */
-public static void printMatrixClockWisely(@NotNull int[][] array) {
+public void printMatrixClockWisely(@NotNull int[][] array) {
     int n = array.length;
     int currentRow = 0;
     int currentColumn = 0;
@@ -52,6 +52,69 @@ public static void printMatrixClockWisely(@NotNull int[][] array) {
 ####2.给定一个单链表，特征，奇数节点升序，偶数节点降序，要求进行排序。
 例如：->1->10->2->9->3->8
 
+这道题我的思路是，先将偶数节点和奇数节点分离成两个独立的链表，然后再将其中一个链表的节点逐一插入另外一个链表。如果是要求最后排序是升序，那就把奇数节点插入偶数节点的链表中，降序就反过来。这里我实现的是升序的方式。
+```
+    public void sortLinkList(Node linkList) {
+        //首先把链表拆分成两个独立的链表，一个是奇数节点的链表，另一个是偶数节点的链链表
+        Node even;
+        Node oddList, odd;
+
+        even = linkList;
+        odd = linkList.next;
+        oddList = odd;
+
+        while (even.next != null && odd.next != null) {
+            even.next = odd.next;
+            even = even.next;
+            odd.next = even.next;
+            odd = odd.next;
+        }
+
+        //切断最后一个偶数节点与奇数节点的引用，让连个链表完全独立
+        if (odd != null && odd.next == null) {
+            even.next = null;
+        }
+
+        //把奇数节点的插入偶数节点的链表中
+        even = linkList;
+        odd = oddList;
+        while (oddList != null) {
+
+            //奇数链表独立出第一个节点
+            oddList = oddList.next;
+            odd.next = null;
+
+            while (true) {
+
+                //后插再交换值
+                if (odd.value < even.value) {
+                    odd.next = even.next;
+                    even.next = odd;
+                    int evenValue = even.value;
+                    even.value = odd.value;
+                    odd.value = evenValue;
+                    break;
+                }
+
+                //插入链表尾部
+                if (even.next == null) {
+                    even.next = odd;
+                    even = linkList;
+                    break;
+                }
+                even = even.next;
+            }
+
+            //插入完成，重新指向奇数节点链表，循环分离下一个节点
+            odd = oddList;
+    }
+}
+
+class Node {
+    Node next;
+    int value;
+}
+```
 
 
 ###3.给数组插入元素
@@ -64,7 +127,7 @@ public static void printMatrixClockWisely(@NotNull int[][] array) {
  * @param value    待插入的值
  * @return 插入成功，则返回插入了value的数组，否则会抛出异常
  */
-public static int[] insert(int[] array, int position, int len, int cap, int value) {
+public int[] insert(int[] array, int position, int len, int cap, int value) {
     if (position < 0 || position > len) {
         throw new IllegalArgumentException("position必须大于0且小于等于len");
     }
@@ -86,3 +149,6 @@ public static int[] insert(int[] array, int position, int len, int cap, int valu
 ```
 
 这道题目比较简单，考察的是顺序表的基本操作，但个人感觉这道题目有点不切实际，理论上来讲，len和cap是不应该作为参数传递进来的，所以这个我并没有去考虑这两个参数的合法性。
+
+
+总体来说，头条算比较务实的，这些题目都是基本的顺序表和链表的基本操作，比较直观的，逻辑也很清晰，但是能不能在面试时在短时间内比较好地完成，这的确是一个问题，反正我做了一个早上了，可能是生疏了，感觉要多练练。
