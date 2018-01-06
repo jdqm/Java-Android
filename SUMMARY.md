@@ -32,5 +32,5 @@
   * [1.烧绳子](Funny/rope.md)
   * [2.杯子倒水问题](Funt/water.md)
 * [Part V - 数据结构与算法](Algorithm/README.md)
-  * [某头](Algorithm/jinritoutaio.md)
-
+  * [TT](Algorithm/tt.md)
+  * [BD](Algorithm/bd.md)
