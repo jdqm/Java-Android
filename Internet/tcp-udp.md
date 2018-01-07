@@ -36,7 +36,6 @@ public class TCPServer {
 ```
 
 ```
-
 public class ServerThread extends Thread {
     private Socket socket;
 
@@ -55,28 +54,15 @@ public class ServerThread extends Thread {
             while ((data = bufferedReader.readLine()) != null) {
                 System.out.println(data);
             }
-            socket.shutdownInput();
 
             writer = new OutputStreamWriter(socket.getOutputStream());
             writer.write("我是TCP服务器");
             writer.flush();
-
+            bufferedReader.close();
+            writer.close();
             socket.close();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                bufferedReader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
         }
     }
 }
@@ -87,10 +73,11 @@ Socket客户端
 ```
 public class TCPClient {
     public static void main(String[] args) {
+        Socket socket = null;
         PrintWriter writer = null;
         BufferedReader reader = null;
         try {
-            Socket socket = new Socket("localhost", 8888);
+            socket = new Socket("localhost", 8888);
             OutputStream os = socket.getOutputStream();
             writer = new PrintWriter(os);
             writer.write("我是TCP客户端");
@@ -103,16 +90,102 @@ public class TCPClient {
             while ((reply = reader.readLine()) != null) {
                 System.out.println(reply);
             }
+            writer.close();
+            reader.close();
+            socket.close();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            writer.close();
-            try {
-                reader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 }
 ```
+
+###3.使用UDP进行Socket通信
+步骤：
+（1）服务端创建一个DatagramSocket，监听某个端口；
+（2）客户端创建一个DatagramPacket，包含数据，发送主机地址，端口；
+（3）服务端收到一个DatagramPacket，通过packet.getData()的到数据，packet.getLenght()的到内容长度；
+
+UDP服务端
+```
+public class UDPServer {
+    public static void main(String[] args) {
+        try {
+            DatagramSocket datagramSocket = new DatagramSocket(8888);
+            DatagramPacket packet;
+            byte[] data = new byte[1024];
+            while (true) {
+                packet = new DatagramPacket(data, data.length);
+                datagramSocket.receive(packet);
+                Thread thread = new Thread(new UDPThread(datagramSocket, packet));
+                thread.start();
+            }
+        } catch (SocketException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+```
+public class UDPThread implements Runnable {
+    DatagramSocket socket;
+    DatagramPacket packet;
+
+    public UDPThread(DatagramSocket socket, DatagramPacket packet) {
+        this.socket = socket;
+        this.packet = packet;
+    }
+
+    @Override
+    public void run() {
+        InetAddress address = packet.getAddress();
+        System.out.println("客户端IP地址:" + address.getHostAddress());
+
+        byte[] data = packet.getData();
+        //读取客户端发送过来的数据报
+        String info = new String(data, 0, packet.getLength());
+        System.out.println(info);
+
+        byte[] reply = "UPD服务器回复内容".getBytes();
+        try {
+            socket.send(new DatagramPacket(reply, reply.length, address, 8800));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+```
+
+UDP客户端
+```
+public class UDPClient {
+    public static void main(String[] args) {
+        try {
+            InetAddress address = InetAddress.getByName("localhost");
+            byte[] data = "UDP客户端消息".getBytes();
+            DatagramPacket packet = new DatagramPacket(data, 0, data.length, address, 8888);
+            DatagramSocket socket = new DatagramSocket();
+            socket.send(packet);
+
+            byte[] reply = new byte[1024];
+            DatagramPacket packetReply = new DatagramPacket(reply, reply.length);
+            DatagramSocket socket1 = new DatagramSocket(8800);
+            socket1.receive(packetReply);
+            String replyStr = new String(reply, 0, packet.getLength());
+            System.out.println(replyStr);
+            socket.close();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (SocketException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+
