@@ -9,6 +9,7 @@
   * [4.集合框架](Java/collection.md)
   * [5.泛型](Java/generic-type.md)
   * [6.对象拷贝](Java/object-copy.md)
+  * [引用分类](Java/reference.md)
 * [Part II - Android](Android/README.md)
   * [1.activity](Android/activity.md)
   * [2.service](Android/service.md)
