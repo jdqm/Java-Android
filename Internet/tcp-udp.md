@@ -106,6 +106,8 @@ public class TCPClient {
 （2）客户端创建一个DatagramPacket，包含数据，发送主机地址，端口；
 （3）服务端收到一个DatagramPacket，通过packet.getData()的到数据，packet.getLenght()的到内容长度；
 
+> note: 其实使用UDP进行Socket通信，大家的地位是一样的，谁发送数据报谁就是客户端，谁收税就是服务端。
+
 UDP服务端
 ```
 public class UDPServer {
