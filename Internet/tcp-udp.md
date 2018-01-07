@@ -76,8 +76,8 @@ public class ServerThread extends Thread {
 }
 ```
 
-Socket客户端
 
+Socket客户端
 ```
 public class TCPClient {
     public static void main(String[] args) {
