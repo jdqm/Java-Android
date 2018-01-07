@@ -9,6 +9,7 @@
 ```
 ReferenceQueue referenceQueue = new ReferenceQueue();
 SoftReference<Book> softReference = new SoftReference<>(new Book(), referenceQueue);
+Book book = softReference.get();
 Reference reference = referenceQueue.poll();
 ```
 当系统内存不足时，触发gc，这个Book就会被回收，reference 将不为null。
@@ -19,11 +20,20 @@ Reference reference = referenceQueue.poll();
 ```
  ReferenceQueue referenceQueue = new ReferenceQueue();
  WeakReference<Book> weakReference = new WeakReference(new Book(), referenceQueue);
+ Book book = softReference.get();
  System.gc();
  //Runtime.getRuntime().gc();
  Reference reference = referenceQueue.poll();
 ```
 ![](/Resource/weak_reference.png)
 
+当然这不是每次都能复现，因为我们调用System.gc()只是告诉JVM该回收垃圾了，但是它上面时候做还是不一定的，但就我测试来看，只要多写几次System.gc()，复现的概率还是很高的。
+
 ###4.虚引用-PhantomReference
 
+如果一个对象只有虚引用在引用它，垃圾回收器是可以在任意时候对其进行回收的，虚引用主要用来跟踪对象被垃圾回收器回收的活动，当被回收时，JVM会把这个弱引用加入到与之相关联的ReferenceQueue中。与软引用和弱引用不同的是，虚引用必须有一个与之关联的ReferenceQueue，通过phantomReference.get()得到的值为null，试想一下，如果没有ReferenceQueue与之关联还有什么存在的价值呢？
+```
+PhantomReference<Book> phantomReference = new PhantomReference<>(new Book(), referenceQueue);
+Book book = phantomReference.get(); //此值为null
+Reference reference = referenceQueue.poll();
+```
