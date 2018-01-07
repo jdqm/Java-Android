@@ -8,5 +8,105 @@
 ⑦TCP的逻辑通信信道是全双工的可靠信道，而UDP则是不可靠信道
 ⑧TCP多用于传递少量数据，而UDP多用于传递大量数据
 
+###2.使用TCP进行Socket通信
+Socket服务端
+```
+public class TCPServer {
+    public static void main(String[] args) {
+        try {
+            ServerSocket serverSocket = new ServerSocket(8888);
+            while (true) {
+                Socket socket = serverSocket.accept();
+                new ServerThread(socket).start();
+                InetAddress address = socket.getInetAddress();
+                System.out.println("当前客户端IP为：" + address.getHostAddress());
+            }
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
 
+```
+
+public class ServerThread extends Thread {
+    private Socket socket;
+
+    public ServerThread(Socket socket) {
+        this.socket = socket;
+    }
+
+    @Override
+    public void run() {
+        BufferedReader bufferedReader = null;
+        OutputStreamWriter writer = null;
+        try {
+            InputStream inputStream = socket.getInputStream();
+            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            String data;
+            while ((data = bufferedReader.readLine()) != null) {
+                System.out.println(data);
+            }
+            socket.shutdownInput();
+
+            writer = new OutputStreamWriter(socket.getOutputStream());
+            writer.write("我是TCP服务器");
+            writer.flush();
+
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+    }
+}
+```
+
+Socket客户端
+
+```
+public class TCPClient {
+    public static void main(String[] args) {
+        PrintWriter writer = null;
+        BufferedReader reader = null;
+        try {
+            Socket socket = new Socket("localhost", 8888);
+            OutputStream os = socket.getOutputStream();
+            writer = new PrintWriter(os);
+            writer.write("我是TCP客户端");
+            writer.flush();
+            socket.shutdownOutput();
+
+            InputStream inputStream = socket.getInputStream();
+            reader = new BufferedReader(new InputStreamReader(inputStream));
+            String reply;
+            while ((reply = reader.readLine()) != null) {
+                System.out.println(reply);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            writer.close();
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+```

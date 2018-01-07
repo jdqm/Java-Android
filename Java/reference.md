@@ -1,0 +1,1 @@
+Java中的引用类型有四种，分别是：①强引用（StrongReference）、②软引用（d）
