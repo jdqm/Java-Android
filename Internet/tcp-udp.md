@@ -9,6 +9,12 @@
 ⑧TCP多用于传递少量数据，而UDP多用于传递大量数据
 
 ###2.使用TCP进行Socket通信
+步骤：
+（1）服务端创建ServerSocket，需要传入一个端口号；
+（2）调用serverSocket.accept()监听（1）中设置的端口；
+（3）客户端创建一个Socket对象，传入主机地址、端口号；
+（4）客户端和服务端之间可以通过InputStream和OutputStream来进行交互数据。
+
 Socket服务端
 ```
 public class TCPServer {
