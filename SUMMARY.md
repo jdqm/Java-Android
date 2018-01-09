@@ -23,6 +23,7 @@
   * [Gradle for android](Android/gradle.md)
   * [CrashHandler](Android/crash.md)
   * [内存泄漏](Android/memery-leank.md)
+  * [实现倒计时的几种方式](Android/count-down.md)
 ###Part III - 设计模式  
 * [创建型](Pattern/README.md)
   * [1.strategy](Pattern/strategy.md)
