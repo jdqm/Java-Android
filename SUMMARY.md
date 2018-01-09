@@ -1,7 +1,8 @@
 # Summary
 
 * [Introduction](README.md)
-* [Part I - Java](Java/README.md)
+###Part I - Java
+* [Java基础](Java/README.md)
   * [0.琐碎](Java/oop.md)
   * [1.多线程](Java/multithread.md)
   * [2.抽象类与接口](Java/abstract-interface.md)
@@ -10,7 +11,8 @@
   * [5.泛型](Java/generic-type.md)
   * [6.对象拷贝](Java/object-copy.md)
   * [引用分类](Java/reference.md)
-* [Part II - Android](Android/README.md)
+###Part II - Android  
+* [Android基础](Android/README.md)
   * [1.activity](Android/activity.md)
   * [2.service](Android/service.md)
   * [3.broadcastReceicer](Android/broadcast-receiver.md)
@@ -21,7 +23,8 @@
   * [Gradle for android](Android/gradle.md)
   * [CrashHandler](Android/crash.md)
   * [内存泄漏](Android/memery-leank.md)
-* [Part III - 设计模式](Pattern/README.md)
+###Part III - 设计模式  
+* [创建型](Pattern/README.md)
   * [1.strategy](Pattern/strategy.md)
   * [2.observer](Pattern/observer.md)
   * [3.decorator](Pattern/decorator.md)
@@ -29,8 +32,8 @@
   * [5.command](Pattern/command.md)
   * [6.abdapter](Pattern/abdapter.md)
   * [7.template-method](Pattern/template-method.md)
-  * [行为类模式](Pattern/Action/README.md)
-    *[1.中介者模式](Pattern/Action/mediator.md)
+*[行为型模式](Pattern/Action/README.md)
+  *[1.中介者模式](Pattern/Action/mediator.md)
 * [Part IV - 有意思的问题](Funny/README.md)
   * [1.烧绳子](Funny/rope.md)
   * [2.杯子倒水问题](Funt/water.md)
