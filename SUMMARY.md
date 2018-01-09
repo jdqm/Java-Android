@@ -29,6 +29,7 @@
   * [5.command](Pattern/command.md)
   * [6.abdapter](Pattern/abdapter.md)
   * [7.template-method](Pattern/template-method.md)
+  * [行为类模式](Pattern/Action/README.md)
 * [Part IV - 有意思的问题](Funny/README.md)
   * [1.烧绳子](Funny/rope.md)
   * [2.杯子倒水问题](Funt/water.md)
