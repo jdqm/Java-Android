@@ -17,3 +17,4 @@ timer.schedule(task, 0, 1000);
 ```
 
 Timer内部维护了一个 ```TimerImpl extends Thread```，其内部有一个```TimerTask[] timers```，通过```timer.schedule()```系列方法可以向其投递task，具体的实现方式是通过Thread.wait(long)。
+
