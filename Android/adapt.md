@@ -9,3 +9,18 @@ Android的适配问题有很多，主要分为如下几类
 
 ####3.字体适配
 Android推荐sp来做字体的适配，默认情况下sp与dp是相等的，但sp会随着系统的缩放倍数改变，而dp不会。
+
+###4.drawble与mipmap
+
+xhdpi：2.0
+hdpi：1.5
+mdpi：1.0（基准）（160*480）
+ldpi：0.75
+
+
+sp： scale Pixel 缩放像素，通常与dp是等值
+dp/dip： density independent pixel 设备密度无关像素
+dpi： dots per inch 每英寸像素数量
+分辨率：屏幕两边的像素数量，例如高位1080个像素，宽有1920个像素，分辨率为1080*1920
+屏幕尺寸： 屏幕对角线的长度，例如5寸，4.7寸，当年经典的iPhone4是3.5寸
+
