@@ -3,7 +3,7 @@
 **时间复杂度: O(n*n)**
 
 ```
-public int[] popupSort(int[] array) {
+public int[] bubbleSort(int[] array) {
     if (array == null) {
         return array;
     }
@@ -26,7 +26,7 @@ public int[] popupSort(int[] array) {
     return array;
 }
 
-public int[] popupSort2(int[] array) {
+public int[] bubbleSort(int[] array) {
     if (array == null) {
         return array;
     }
