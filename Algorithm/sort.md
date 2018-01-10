@@ -9,7 +9,7 @@ public int[] bubbleSort(int[] array) {
     }
 
     boolean flag = true;
-    for (int i = 0; i < (array.length - 1) & flag; i++) {
+    for (int i = 0; i < (array.length - 1) && flag; i++) {
         System.out.println("排序");
         flag = false;
         //每次把剩下的最大值沉入底部
@@ -31,7 +31,7 @@ public int[] bubbleSort(int[] array) {
         return array;
     }
     boolean flag = true;
-    for (int i = 0; i < array.length - 1 & flag; i++) {
+    for (int i = 0; i < array.length - 1 && flag; i++) {
         System.out.println("排序");
         flag = false;
         //每次把剩下的最小的往上浮动
@@ -76,3 +76,25 @@ public int[] selectSort(int[] array) {
     return array;
 }
 ```
+
+3.插入排序
+基本思想：将后面待排序的元素，逐个插入已拍好序的序列中。主要逻辑是前面排好序的要让出一个位置来，从已排序好的最后一个位置开始，一路往前让，当大于前面的元素就插入。（跟打牌一样,只能把后面的往前插）
+**时间复杂度：O(n*n)**，性能上优于冒泡排序和选择排序
+```
+public int[] insertSort(int[] array) {
+    if (array == null) {
+        return array;
+    }
+    int length = array.length;
+    int j;
+    for (int i = 1; i < length; i++) {
+        int tmp = array[i]; //这个值要存起来，否自第一次让位置就把它给覆盖了
+        for (j = i; j > 0 && tmp < array[j - 1]; j--) {
+            array[j] = array[j - 1];
+        }
+        array[j] = tmp;
+    }
+    return array;
+}
+```
+4.希尔排序
