@@ -1,5 +1,5 @@
 ###1.冒泡排序
-假设有n个元素，排序趟数是n-1，需要注意一点优化点是，若果一趟排序下来没有交换发生，则说明已经排好续了。
+基本思想：每次比较交换相邻的元素，随着排序的进行，元素越来越少。假设有n个元素，排序趟数是n-1，需要注意一点优化点是，若果一趟排序下来没有交换发生，则说明已经排好续了。
 **时间复杂度: O(n*n)**
 
 ```
@@ -49,4 +49,30 @@ public int[] bubbleSort(int[] array) {
 }
 ```
 
-###2.快速排序
+2.选择排序
+
+基本思想：每次从剩下的未排序元素元素中，找出最小的值，已拍好的尾部。由于交换次数变少，所以性能略优于bubbleSort，但是不不知道剩余元素是否已经排好序。
+**时间复杂度：O(n*n)**
+
+```
+public int[] selectSort(int[] array) {
+    if (array == null) {
+        return array;
+    }
+    int length = array.length;
+    for (int i = 0; i < length - 1; i++) {
+        int k = i;
+        for (int j = length - 1; j > i ; j--) {
+            if (array[j] < array[k]) {
+                k = j;
+            }
+        }
+        if (i != k) {
+            int tmp = array[i];
+            array[i] = array[k];
+            array[k] = tmp;
+        }
+    }
+    return array;
+}
+```
