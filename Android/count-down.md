@@ -37,3 +37,5 @@ private static Handler handler = new Handler() {
 
 handler.sendEmptyMessageDelayed(0, 1000);
 ```
+
+这种方式其实也是通过Thread.wait()来实现，Looper、MessageQueue、Handler，Handler发送消息实际上就是往MessageQueue插入消息，并唤醒正在阻塞的线程，MeesageQueue的next方法返回消息，Looper调用Handler的dispatchMesaage分发消息，Handler处理消息，分三种情况，msg.callback是否为null（即Handler#post(Runable)所发送的Runnable对象），不为null则条用其run方法，否则继续检查Handler#mCallback是否为null，不为null则调用其mCallback.handleMessage()，若这两个都为null，则调用Handler的handleMessage()方法，这三者只有一个会被调用，可见Handler的handleMessage()优先级是最低的。
