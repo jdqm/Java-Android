@@ -39,3 +39,44 @@ handler.sendEmptyMessageDelayed(0, 1000);
 ```
 
 这种方式其实也是通过Thread.wait()来实现，Looper、MessageQueue、Handler，Handler发送消息实际上就是往MessageQueue插入消息，并唤醒正在阻塞的线程，MeesageQueue的next方法返回消息，Looper调用Handler的dispatchMesaage分发消息，Handler处理消息，分三种情况，msg.callback是否为null（即Handler#post(Runable)所发送的Runnable对象），不为null则条用其run方法，否则继续检查Handler#mCallback是否为null，不为null则调用其mCallback.handleMessage()，若这两个都为null，则调用Handler的handleMessage()方法，这三者只有一个会被调用，可见Handler的handleMessage()优先级是最低的。
+
+采用Handler的形式，系统提供了一个比较好用的类CountDownTimer，使用也很简单。
+```
+public class CountTimer extends CountDownTimer {
+    private static final String TAG = "CountTimer";
+    
+    /**
+     * @param millisInFuture    The number of millis in the future from the call
+     *                          to {@link #start()} until the countdown is done and {@link #onFinish()}
+     *                          is called.
+     * @param countDownInterval The interval along the way to receive
+     *                          {@link #onTick(long)} callbacks.
+     */
+    public CountTimer(long millisInFuture, long countDownInterval) {
+        super(millisInFuture, countDownInterval);
+    }
+
+    /**
+     * 若场景不需要展示倒计时过程，所以应调大此方法回调间隔，减少Handler发送消息
+     *
+     * @param millisUntilFinished 倒计时剩余时间（ms）
+     */
+    @Override
+    public void onTick(long millisUntilFinished) {
+        ZLogger.t(TAG).d("倒计时剩余时间（秒）:" + millisUntilFinished / 1000);
+    }
+
+    @Override
+    public void onFinish() {
+        ZLogger.t(TAG).d("倒计时结束");
+    }
+}
+```
+```
+//每秒钟回调一次onTick
+countTimer = new CountTimer(5000, 1000);
+countTimer.start();
+countTimer.cancel();
+```
+
+###3.采用动画机制，通过过程回调来时想.
