@@ -1,10 +1,10 @@
 1.反转单链表
 
-三个指针法
+方法一：3指针法
 ```
 public Node revertLinkList(Node head) {
     //两个以上节点才考虑反转
-    if (head != null && head.next != null) {
+    if (head == null || head.next == null) {
         return head;
     }
     Node p, q;
@@ -24,3 +24,7 @@ public Node revertLinkList(Node head) {
     return head;
 }
 ```
+
+方法二：用一个数组来保存节点，再根据索引重新组装成一个新的链表，此方法比较耗内存；
+
+方法三：
