@@ -42,5 +42,6 @@
   * [BD](Algorithm/bd.md)
   * [TX](Algorithm/tx.md)
   * [排序算法](Algorithm/sort.md)
+  * [查找算法](Algorithm/search.md)
 * [Part VI - 计算机网络](Internet/README.md)
   * [TCP-UDP](Internet/tcp-udp.md)
