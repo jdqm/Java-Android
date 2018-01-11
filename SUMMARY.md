@@ -40,7 +40,7 @@
 * [Part V - 数据结构与算法](Algorithm/README.md)
   * [TT](Algorithm/tt.md)
   * [BD](Algorithm/bd.md)
-  * [TX][Algorithm](tx.md)
+  * [TX](Algorithm/tx.md)
   * [排序算法](Algorithm/sort.md)
 * [Part VI - 计算机网络](Internet/README.md)
   * [TCP-UDP](Internet/tcp-udp.md)
