@@ -98,3 +98,45 @@ public int[] insertSort(int[] array) {
 }
 ```
 4.希尔排序
+
+6.
+
+7.快速排序
+
+基本思想：
+（1）取一个基准数，将大于基数数的放在它后面，将小于或者等于基准数的值放到它的前面；
+（2）以基准数为界限（不包括基准数），在前后两个序列中各自取一个基准数，然后重复第一步，直到每个序列只有一个数字；
+时间复杂度：O(n*lgN)
+```
+public static void quickSort(int[] array, int left, int right) {
+    if (left >= right) {
+        return;
+    }
+    int l = left, r = right;
+    int base = array[l]; // 取当前序列的第0个为基准数，挖坑array[0]
+    while (l < r) {
+
+        //从后面往前找一个比基准数小的值来填坑
+        while (r > l && array[r] >= base) {
+            r --;
+        }
+        if (l < r) {
+            array[l] = array[r]; //坑变为array[r]
+            l++;
+        }
+
+        while (l < r && array[l] < base) {
+            l++;
+        }
+        if (l < r) {
+            array[r] = array[l];//坑变为array[l]
+            r--;
+        }
+
+    }
+    array[l] = base;
+    //递归进行前后区间，直到最后每个区间只有一个数字（即 left == right）
+    quickSort(array, left, l - 1); 
+    quickSort(array, r + 1, right);
+}
+```
