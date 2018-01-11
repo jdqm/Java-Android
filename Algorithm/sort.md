@@ -106,11 +106,14 @@ public int[] insertSort(int[] array) {
 基本思想：
 （1）取一个基准数，将大于基数数的放在它后面，将小于或者等于基准数的值放到它的前面；
 （2）以基准数为界限（不包括基准数），在前后两个序列中各自取一个基准数，然后重复第一步，直到每个序列只有一个数字；
-时间复杂度：O(n*lgN)
+**时间复杂度：O(n*logN)**
+
+快速排序在序列中元素很少时，效率将比较低，不如插入排序，因此一般在序列中元素很少时使用插入排序，这样可以提高整体效率。
+
 ```
 public static void quickSort(int[] array, int left, int right) {
-    if (left >= right) {
-        return;
+    if (left >= right) {//递归出口
+        return; 
     }
     int l = left, r = right;
     int base = array[l]; // 取当前序列的第0个为基准数，挖坑array[0]
