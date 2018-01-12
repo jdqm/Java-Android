@@ -1,7 +1,7 @@
 ###1.二分查找
 ####非递归方式
 ```
-public static int binSearch(int[] array, int value) {
+public int binSearch(int[] array, int value) {
     int start = 0;
     int end = array.length - 1;
     int middle;
@@ -20,7 +20,7 @@ public static int binSearch(int[] array, int value) {
 ```
 ####递归实现
 ```
-public static int binSearch(int[] array, int start, int end, int value) {
+public int binSearch(int[] array, int start, int end, int value) {
     if (end < start) {
         return -1;
     }
