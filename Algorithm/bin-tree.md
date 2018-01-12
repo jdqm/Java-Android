@@ -75,3 +75,32 @@ public static void postOrder(Node root) {
 ####3.二叉树的非递归遍历
 ```
 ```
+
+
+
+####4.按层级遍历
+```
+/**
+ * 按层级从上到下，从左到右遍历
+ *
+ * @param root
+ */
+public static void levelOrder(Node root) {
+    System.out.print("按层级打印:");
+    if (root == null) {
+        return;
+    }
+    Queue<Node> queue = new LinkedList<>();
+    queue.offer(root);
+    while (!queue.isEmpty()) {
+        Node node = queue.poll();
+        visitTreeNode(node);
+        if (node.leftChild != null) {
+            queue.offer(node.leftChild);
+        }
+        if (node.rightChild != null) {
+            queue.offer(node.rightChild);
+        }
+    }
+}
+```
