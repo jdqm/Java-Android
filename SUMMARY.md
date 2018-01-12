@@ -43,5 +43,6 @@
   * [TX](Algorithm/tx.md)
   * [排序算法](Algorithm/sort.md)
   * [查找算法](Algorithm/search.md)
+  * [二叉树的创建、遍历](Algorithm/bin-tree.md)
 * [Part VI - 计算机网络](Internet/README.md)
   * [TCP-UDP](Internet/tcp-udp.md)
