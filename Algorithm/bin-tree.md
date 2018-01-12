@@ -27,49 +27,59 @@ public static void visitTreeNode(Node node) {
     }
 }
 
+```
+####2.二叉树的递归遍历
+
+```
 /**
  * 递归先序遍历二叉树
  *
  * @param root 根节点
  */
 public static void preOrder(Node root) {
-    if (root == null) {
-        return;
+    if (root != null) {
+        visitTreeNode(root);
+        if (root.leftChild != null) {
+            preOrder(root.leftChild);
+        }
+        if (root.rightChild != null) {
+            preOrder(root.rightChild);
+        }
     }
-    visitTreeNode(root);
-    preOrder(root.leftChild);
-    preOrder(root.rightChild);
 }
-```
-####2.二叉树的递归遍历
 
-```
 /**
  * 递归中序遍历二叉树
  *
  * @param root 根节点
  */
 public static void inOrder(Node root) {
-    if (root == null) {
-        return;
+    if (root != null) {
+        if (root.leftChild != null) {
+            inOrder(root.leftChild);
+        }
+        visitTreeNode(root);
+        if (root.rightChild != null) {
+            inOrder(root.rightChild);
+        }
     }
-    inOrder(root.leftChild);
-    visitTreeNode(root);
-    inOrder(root.rightChild);
 }
 
 /**
- * 递归中序遍历二叉树
+ * 递归后序遍历二叉树
  *
  * @param root 根节点
  */
-public static void postOrder(Node root) {
-    if (root == null) {
-        return;
+public static void postOrder(Node root) {;
+    if (root != null) {
+        if (root.leftChild != null) {
+            postOrder(root.leftChild);
+        }
+        if (root.rightChild != null) {
+            postOrder(root.rightChild);
+        }
+        visitTreeNode(root);
     }
-    postOrder(root.leftChild);
-    postOrder(root.rightChild);
-    visitTreeNode(root);
 }
 ```
 ####3.二叉树的非递归遍历
