@@ -1,5 +1,5 @@
 ﻿
-## 1.理解synchronized的含义、明确synchronized关键字修饰普通方法、静态方法和代码块时锁对象的差异。
+###1.理解synchronized的含义、明确synchronized关键字修饰普通方法、静态方法和代码块时锁对象的差异。
 
 有如下一个类A
 ```
@@ -59,16 +59,66 @@ a1.a();             a1.a();
 
 对象锁的状态信息保存在对象的头信息中的Mark Word中，相关的还有Lock Record，当被锁定、解锁等时候这些状态信息就会改变，当然了，这些状态信息的改变也要保证原子性，否则也是不安全的。详情可移步《深入理解Java虚拟机：JVM高级特性与最佳实践》第五部分。
 
-#2.volatile关键字解决了什么问题？
-答：此关键字主要解决可见性问题。不同的线程的工作区会存储主存变量的副本，有可能导致修改其他线程不可见的现象。
+###2.volatile关键字解决了什么问题
+答：此关键字主要解决可见性和指令重重排序问题。不同的线程的工作区会存储主存变量的副本，有可能导致修改其他线程不可见的现象；对于指令重排序，有的编译器会将一些指令进行重排序，以提高性能，这有可能会引起一些问题，例如在DCL单例模式中，如果不加volatile修饰静态单例，就有可能得到一个不完全初始化的instance.
 
-#3.lock与unluck?
-
-
+###3.lock与unluck?
 
 
 
+###4.写一个死锁的例子
 
+产生死锁的原因是两个或两个以上的线程都在等待对方持有的资源（同步锁对象），导致都处于僵持状态。下面这个例子，线程1持有lock1对象锁，线程2持有lock2对象锁，这个时候线程1在等待lock2，而线程2等待lock1，导致两个线程都处于阻塞状态。
+```
+public class DeadLock implements Runnable {
+    static Object lock1 = new Object();
+    static Object lock2 = new Object();
+
+    boolean flag;
+
+    public DeadLock(boolean flag) {
+        this.flag = flag;
+    }
+
+    @Override
+    public void run() {
+        if (flag) {
+            synchronized (lock1) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                synchronized (lock2) {
+                    System.out.println("lock2");
+                }
+            }
+        } else {
+            synchronized (lock2) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                synchronized (lock1) {
+                    System.out.println("lock1");
+                }
+            }
+        }
+    }
+}
+```
+
+```
+public class DeadLockDemo {
+    public static void main(String...args) {
+        DeadLock deadLock1 = new DeadLock(false);
+        DeadLock deadLock2 = new DeadLock(true);
+        new Thread(deadLock1).start();
+        new Thread(deadLock2).start();
+    }
+}
+```
 
 
 
