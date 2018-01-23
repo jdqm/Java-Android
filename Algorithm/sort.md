@@ -97,7 +97,72 @@ public int[] insertSort(int[] array) {
     return array;
 }
 ```
-4.希尔排序
+###4.希尔排序
+
+基本思想：先将整个待排元素序列分割成若干个子序列（由相隔某个“增量”的元素组成的）分别进行直接插入排序，然后依次缩减增量再进行排序，待整个序列中的元素基本有序（增量足够小）时，再对全体元素进行一次直接插入排序。因为直接插入排序在元素基本有序的情况下（接近最好情况），效率是很高的，因此希尔排序在时间效率上比前两种方法有较大提高
+```
+/**
+ * 这种写法严格按照排序的算的步骤，但是不够简洁
+ *
+ * @param array
+ */
+public void shellSort(int[] array) {
+    if (array == null) {
+        return;
+    }
+    int i, j, gap;
+    for (gap = array.length / 2; gap > 0; gap /= 2) {
+        for (i = 0; i < gap; i++) {
+            for (j = i + gap; j < array.length; j += gap) {
+                if (array[j] < array[j - gap]) {
+                    //a[j] 挖坑
+                    int temp = array[j];
+                    int k = j - gap;
+
+                    //往前找插入位置
+                    while (k >= 0 && array[k] > temp) {
+                        //组内往后填坑，第一次是填a[j]
+                        array[k + gap] = array[k];
+                        k = k - gap;
+                    }
+
+                    //填坑a[j]
+                    array[k + gap] = temp;
+                }
+            }
+        }
+    }
+
+}
+
+/**
+ * 这种方式简洁，但对于刚接触这个算法的人可能不是很直观，因为不是严格按照算法的逻辑来的；
+ * 是从第二个分组开始，各个分组的插入是交替进行的，并不是一个分组插入完成才进行另外一个分组
+ *
+ * @param array
+ */
+public void shellSort2(int[] array) {
+    if (array == null) {
+        return;
+    }
+    int i, gap;
+    for (gap = array.length / 2; gap > 0; gap /= 2) {
+        for (i = gap; i < array.length; i++) {
+
+            if (array[i] < array[i - gap]) {
+                int temp = array[i];
+                int k = i - gap;
+
+                while (k >= 0 && array[k] > temp) {
+                    array[k + gap] = array[k];
+                    k -= gap;
+                }
+                array[k + gap] = temp;
+            }
+        }
+    }
+}
+```
 
 6.
 
