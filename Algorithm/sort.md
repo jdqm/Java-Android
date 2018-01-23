@@ -49,7 +49,7 @@ public int[] bubbleSort(int[] array) {
 }
 ```
 
-###2.选择排序
+2.选择排序
 
 基本思想：每次从剩下的未排序元素元素中，找出最小的值，已排好的尾部。由于交换次数变少，所以性能略优于bubbleSort，但是这种算法无法察觉到剩余元素是否已经排好序。
 **时间复杂度：O(n*n)**
@@ -77,7 +77,7 @@ public int[] selectSort(int[] array) {
 }
 ```
 
-###3.插入排序
+3.插入排序
 基本思想：将后面待排序的元素，逐个插入已拍好序的序列中。主要逻辑是前面排好序的要让出一个位置来，从已排序好的最后一个位置开始，一路往前让，当大于前面的元素就插入。（跟打牌一样,只能把后面的往前插）
 **时间复杂度：O(n*n)**，性能上优于冒泡排序和选择排序
 ```
@@ -97,73 +97,7 @@ public int[] insertSort(int[] array) {
     return array;
 }
 ```
-###4.希尔排序
-
-**基本思想：**先将整个待排元素序列分割成若干个子序列（由相隔某个“增量”的元素组成的）分别进行直接插入排序，然后依次缩减增量再进行排序，待整个序列中的元素基本有序（增量足够小）时，再对全体元素进行一次直接插入排序。因为直接插入排序在元素基本有序的情况下（接近最好情况），效率是很高的，因此希尔排序在时间效率上比前两种方法有较大提高
-**时间复杂度：** O(n^1.5)
-```
-/**
- * 这种写法严格按照排序的算的步骤，但是不够简洁
- *
- * @param array
- */
-public void shellSort(int[] array) {
-    if (array == null) {
-        return;
-    }
-    int i, j, gap;
-    for (gap = array.length / 2; gap > 0; gap /= 2) {
-        for (i = 0; i < gap; i++) {
-            for (j = i + gap; j < array.length; j += gap) {
-                if (array[j] < array[j - gap]) {
-                    //a[j] 挖坑
-                    int temp = array[j];
-                    int k = j - gap;
-
-                    //往前找插入位置
-                    while (k >= 0 && array[k] > temp) {
-                        //组内往后填坑，第一次是填a[j]
-                        array[k + gap] = array[k];
-                        k = k - gap;
-                    }
-
-                    //填坑a[j]
-                    array[k + gap] = temp;
-                }
-            }
-        }
-    }
-
-}
-
-/**
- * 这种方式简洁，但对于刚接触这个算法的人可能不是很直观，因为不是严格按照算法的逻辑来的；
- * 是从第二个分组开始，各个分组的插入是交替进行的，并不是一个分组插入完成才进行另外一个分组
- *
- * @param array
- */
-public void shellSort2(int[] array) {
-    if (array == null) {
-        return;
-    }
-    int i, gap;
-    for (gap = array.length / 2; gap > 0; gap /= 2) {
-        for (i = gap; i < array.length; i++) {
-
-            if (array[i] < array[i - gap]) {
-                int temp = array[i];
-                int k = i - gap;
-
-                while (k >= 0 && array[k] > temp) {
-                    array[k + gap] = array[k];
-                    k -= gap;
-                }
-                array[k + gap] = temp;
-            }
-        }
-    }
-}
-```
+4.希尔排序
 
 6.
 
