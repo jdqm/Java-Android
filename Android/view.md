@@ -31,13 +31,13 @@ int height = testView.getMeasuredHeight(); //200
 ```
 - **```wrap_content```时**
 ```
-int measuredWidth = MeasureSpec.makeMeasureSpec(View.MEASURED_SIZE_MASK, MeasureSpec.AT_MOST);
-int measuredHeight = MeasureSpec.makeMeasureSpec(View.MEASURED_SIZE_MASK, MeasureSpec.AT_MOST);
+int measuredWidth = MeasureSpec.makeMeasureSpec((1<<30)-1, MeasureSpec.AT_MOST);
+int measuredHeight = MeasureSpec.makeMeasureSpec((1<<30)-1, MeasureSpec.AT_MOST);
 testView.measure(measuredWidth, measuredHeight);
 int width = testView.getMeasuredWidth();
 int height = testView.getMeasuredHeight(); 
 ```
-这里使用```View.MEASURED_SIZE_MASK```而不是```(1<<30)-1```的原因是，在getMeasuredWidth()时高位会被置0。
+
 >注意：这种情况下如果父布局比当前View的wrap_content小的话，是不准确的，最终大小不能超过父布局。比如：宽度```wrap_contet```是106px，但父View的宽度是100px，最终的大小是100px。
 
 -  **```match_parent```时**
