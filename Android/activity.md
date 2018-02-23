@@ -17,7 +17,7 @@
 
 #### 3.清晰地描述下onNewIntent和onConfigurationChanged这两个生命周期方法的场景？
 - onNewIntent：在singleTop、singleTask、singleInstance模式下，若发生重用Activity实例，则会回调onNewIntent，在onNewIntent中可以通过setIntent来刷新getIntent的到数据。
-- onConfigurationChanged：在App运行期间，若系统的配置信息发生了改变，例如屏幕方向、语言、键盘参数等信息发生了改变，系统默认的处理方式是销毁当前Activity，但有些情况我们希望这样做，例如在视频播放时横竖屏切换并不希望重新创建该Activity，这是我们需要在AndroidManifest.xml中<activity>标签中声明android:configChanges属性，例如希望横竖屏切换不销毁重建通常会声明这些属性： ```screenSize|orientation|keyboardHidden。```。这个时候系统会回调onConfigurationChanged来告诉我们系统配置发生了变化，onConfigurationChanged参数中包含一个Configuration对象，可以从中读取最新的配置信息来适配UI。
+- onConfigurationChanged：在App运行期间，若系统的配置信息发生了改变，例如屏幕方向、语言、键盘参数等信息发生了改变，系统默认的处理方式是销毁当前Activity，但有些情况我们不希望这样做，例如在视频播放时横竖屏切换并不希望重新创建该Activity，这是我们需要在AndroidManifest.xml中<activity>标签中声明android:configChanges属性，例如希望横竖屏切换不销毁重建通常会声明这些属性： ```screenSize|orientation|keyboardHidden。```。这个时候系统会回调onConfigurationChanged来告诉我们系统配置发生了变化，onConfigurationChanged参数中包含一个Configuration对象，可以从中读取最新的配置信息来适配UI。
 >**注：从API13开始屏幕旋转 screenSize也会发生改变。**
 
 #### 4.IntentFilter的匹配规则
@@ -76,7 +76,7 @@ if (!resolveInfos.isEmpty()) {
 
 用户开始新的活动，并且希望得到新活动的某些信息。比如选择照片、选择联系人、选择收货地址、进行某块数据编辑工作等。
 #####5.2 requestCode
-- 解决的是「区分多个异步任务」的问题。与其他异步 API 的设计类似，如果没有这个信息，那么 Activity 在收到响应时会进入混乱的状态。比如他不知道自己得到的是选择照片还是选择联系人的结果。
+- 解决的是「区分多个异步任务」的问题。与其他异步 API 的设计类似，如果没有这个信息，那么 Activity 在收到响应时会进入混乱的状态。比如它不知道自己得到的是选择照片还是选择联系人的结果。
 - 该信息会发送到 AMS 那边的 ActivityRecord.requestCode 变量进行记录，Client 端新 Activity 并不知道这个信息。
 
 **为什么 requestCode < 0 时收不到结果？**
