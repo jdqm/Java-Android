@@ -1,5 +1,5 @@
 ####1、Service的start和bind状态有什么区别？
-答：start启动service时，service有独立的生命周期，不依赖与该组件；多次调用start方法，会重复调用onStartCommand方法，start启动的service需要调用stopService或者stopself来停止service(IntentService或自动调用stopSelf方法)。
+答：start启动service时，service有独立的生命周期，不依赖与该组件；多次调用start方法，会重复调用onStartCommand方法，start启动的service需要调用stopService或者stopself来停止service(IntentService会自动调用stopSelf方法)。
 
 多次调用bind方法，只会调用一次onBind方法。bind绑定的Service，service依赖于这些组件，这些组件全部销毁后，service也随之销毁。
 
