@@ -5,7 +5,7 @@
 
 
 ####2、同一个Service，先startService，然后再bindService，如何把它停止掉？
-答：不论调用多少次startService，只需调用一次stopService或者stopSelf方法；不同的组件调用了n次bindService，就要对应n次unBindService才能停止。因此此问题需要调用一次stopService和n次unBindService才能停止掉。
+答：不论调用多少次startService，只需调用一次stopService或者stopSelf方法；不同的组件调用了n次bindService，就要对应n次unBindService才能停止。因此此问题需要调用一次stopService和n次unBindService才能停止掉，无顺序要求。
 >注：这里默认是使用不同的组件调用了n次bindService,同一个组件多次bind算一次。
 
 ####3、你有注意到Service的onStartCommand方法的返回值吗？不同返回值有什么区别？
