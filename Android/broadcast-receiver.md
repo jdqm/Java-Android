@@ -89,6 +89,7 @@ sendStickyBroadcast(intent);
 # IV. 接收顺序
 
 1. 对于无序广播，动态注册的广播接收者会先收到，可以从源码中得到理论支撑。在BroadcastQueue类中有两个集合
+
 ```
 //存储所有动态注册的无序广播接受者
 final ArrayList<BroadcastRecord> mParallelBroadcasts = new ArrayList<>();
