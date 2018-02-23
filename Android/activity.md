@@ -166,6 +166,7 @@ static class ReqGC {
 - Client 端数据经过 ApplicationThread 对象、ActivityThread 对象的分发最后到达 Activity
 
 **startActivityForResult 和 singleTask 导致源 Activity 收不到正确结果问题**
+
 **基本原则**
 
 源 Activity 和目标 Activity 无法在跨 Task 情况下通过 onActivityResult 传递数据。Android 5.0 以上 AMS 在处理 manifest.xml 文件中的 singleTask 和 singleInstance 信息「不会」创建新的 Task，因此可以收到正常回调
