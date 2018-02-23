@@ -1,14 +1,14 @@
-##1、Service的start和bind状态有什么区别？
+####1、Service的start和bind状态有什么区别？
 答：start启动service时，service有独立的生命周期，不依赖与该组件；多次调用start方法，会重复调用onStartCommand方法，start启动的service需要调用stopService或者stopself来停止service(IntentService或自动调用stopSelf方法)。
 
 多次调用bind方法，只会调用一次onBind方法。bind绑定的Service，service依赖于这些组件，这些组件全部销毁后，service也随之销毁。
 
 
-##2、同一个Service，先startService，然后再bindService，如何把它停止掉？
+####2、同一个Service，先startService，然后再bindService，如何把它停止掉？
 答：不论调用多少次startService，只需调用一次stopService或者stopSelf方法；不同的组件调用了n次bindService，就要对应n次unBindService才能停止。因此此问题需要调用一次stopService和n次unBindService才能停止掉。
 >注：这里默认是使用不同的组件调用了n次bindService,同一个组件多次bind算一次。
 
-##3、你有注意到Service的onStartCommand方法的返回值吗？不同返回值有什么区别？
+####3、你有注意到Service的onStartCommand方法的返回值吗？不同返回值有什么区别？
 答：返回值只能是以下4个中的一个，其他的返回值会抛出异常。
 
 |返回值|行为特点|
@@ -19,7 +19,7 @@
 |START_STICKY_COMPATIBILITY|这个值是START_STICKY的兼容版，不确保服务会被重建，它与START_STICKY的差别是：服务对应的ServiceRecord的callStart成员会被置为false|
 
 
-##4、Service的生命周期方法onCreate、onStart、onBind等运行在哪个线程？
+####4、Service的生命周期方法onCreate、onStart、onBind等运行在哪个线程？
 答：运行在宿主进行的主线程中。当startService或者bindService时的大概流程为：
 (1)ContextImpl利用AMS在客户端的代理对象向AMS发起远程调用；
 (2)AMS通过ApplicationThread的Binder方法与Service宿主进程交互，并通过mH这个Handler将逻辑切换到主线程中，接着onCreate在主线程中被调用；
