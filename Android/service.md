@@ -20,7 +20,7 @@
 
 
 ####4、Service的生命周期方法onCreate、onStart、onBind等运行在哪个线程？
-答：运行在宿主进行的主线程中。当startService或者bindService时的大概流程为：
+答：运行在宿主进程的主线程中。当startService或者bindService时的大概流程为：
 (1)ContextImpl利用AMS在客户端的代理对象向AMS发起远程调用；
 (2)AMS通过ApplicationThread的Binder方法与Service宿主进程交互，并通过mH这个Handler将逻辑切换到主线程中，接着onCreate在主线程中被调用；
 (3)onStart、onBind的调用过程也是类似，只不过这三个方法都是由AMS发起的单独的一次跨进程调用。
