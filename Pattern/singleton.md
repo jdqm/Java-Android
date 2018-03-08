@@ -4,7 +4,7 @@
 
 单例模式比较出名的两个词：懒汉式、饿汉试，这两个名字比较有意思，“懒”指的是需要的时候才才创建，“饿”则是在类加载的时候直接创建了实例。单例类有一个特点：构造函数私有化，一个静态实例，一个全局访问点。
 
-#懒汉式
+#懒汉式（DCL）
 ```
 public class LazySingleton {
 
@@ -30,6 +30,23 @@ public class LazySingleton {
 }
 ```
 懒汉式需要注意的一点是同步问题，可以将getInstance()方法改为同步方法，但是这样每次调用getInstance()都会进行同步操作，如果业务场景访问这个方法的并发量比较大，那性能问题就值得考虑，上面的例子采用双重检查加锁的方式来减少使用同步，这样做只有第一次创建的时候会进行同步。其中 volatile 关键字是为了解决instance在线程间的可见性以及防止jvm进行指令重新排序导致得到一个不完整的instance问题。
+
+#懒汉式-inner class
+```
+public class Singleton {
+	
+	private Singleton(){}
+	
+	public static Singleton getInstance(){
+		return SingletonFactory.instance;
+	}
+	
+	private class SingletonFactory(){
+		private static Singleton instance = new Singleton();
+	}
+}
+
+```
 
 #饿汉试
 ```
