@@ -6,7 +6,7 @@ public int binSearch(int[] array, int value) {
     int end = array.length - 1;
     int middle;
     while (start <= end) {
-        middle = (end - start) / 2 + start;
+        middle = (end + start) / 2;
         if (value == array[middle]) {
             return middle;
         } else if (value < array[middle]) {
@@ -24,7 +24,7 @@ public int binSearch(int[] array, int start, int end, int value) {
     if (end < start) {
         return -1;
     }
-    int middle = (end - start) / 2 + start;
+    int middle = (end + start) / 2;
     if (value > array[middle]) {
         return binSearch(array, middle + 1, end, value);
     } else if (value < array[middle]) {
