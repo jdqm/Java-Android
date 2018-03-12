@@ -38,6 +38,7 @@
   * [1.烧绳子](Funny/rope.md)
   * [2.杯子倒水问题](Funny/water.md)
   * [3.拿球](Funny/na-qiu.md)
+  * [3.两个数-和-积](Funny/two-number.md)
 * [Part V - 数据结构与算法](Algorithm/README.md)
   * [TT](Algorithm/tt.md)
   * [BD](Algorithm/bd.md)
