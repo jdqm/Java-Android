@@ -39,6 +39,7 @@
   * [2.杯子倒水问题](Funny/water.md)
   * [3.拿球](Funny/na-qiu.md)
   * [4.两个数-和-积](Funny/two-number.md)
+  * [5.篮子里有几个鸡蛋](Fnuny/how-many-eggs.md)
 * [Part V - 数据结构与算法](Algorithm/README.md)
   * [TT](Algorithm/tt.md)
   * [BD](Algorithm/bd.md)
