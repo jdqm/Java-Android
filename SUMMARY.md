@@ -1,6 +1,6 @@
-# Summary
+# 摘要
 
-* [Introduction](README.md)
+* [介绍](README.md)
 
 ## Part I - Java
 * [Java基础](Java/README.md)
