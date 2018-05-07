@@ -2,7 +2,7 @@
 
 ![map.png](http://upload-images.jianshu.io/upload_images/3631399-e436e5797306140a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-##1.ArrayList
+## 1.ArrayList
 >Resizable-array implementation of the <tt>List</tt> interface.  Implements all optional list operations, and permits all elements, including null.  In addition to implementing the List interface,this class provides methods to manipulate the size of the array that is used internally to store the list.  (This class is roughly equivalent to Vector, except that it is unsynchronized.
 
 - 底层实现是Object数组
@@ -34,7 +34,7 @@ private static int hugeCapacity(int minCapacity) {
 
 -优缺点：基本上就是顺序表（数组的优点），可根据索引直接访问，查找快，但是添加删除可能涉及到数据的迁移，这将影响其性能，所以在经常增添、删除的情景下就不适合使用。
 
-##2.LinkedList
+## 2.LinkedList
 
 >Doubly-linked list implementation of the List and Deque interfaces. Implements all optional list operations, and permits all elements (including null).
 
@@ -48,7 +48,7 @@ class Node<E> {
 ```
 - 优缺点：就是链表的特性，增删高效，查找低效，双向链表在查找的时候根据查找位置距离头尾指针的距离来选择从那边搜索，将时间复杂度从O(n)变成O(n/2)，比较典型的空间换时间。
 
-##3.HashMap
+## 3.HashMap
 
 >Hash table based implementation of the Map interface. This implementation provides all of the optional map operations, and permits null values and the null key. (The HashMap class is roughly equivalent to Hashtable, except that it isunsynchronizedandpermits nulls.) This class makes no guarantees as to the order of the map; in particular, it does not guarantee that the order will remain constant over time.
 
@@ -69,21 +69,21 @@ static final int hash(Object key) {
 
 - 扩容：扩容为原来的两倍，需要重新计算原来元素的位置，原来的元素位置要么在原位置，要么在原来的位置+原来的大小，例如原来是16的容量，索引是5，修改后可能是5或者，16+5。到底是哪个取决于hash的下一位是0还是1。
 
-#####1.画出HashMap的存储结构图。
+### 1.画出HashMap的存储结构图。
 
 
-#####2.HashMap在什么情况下会扩容？
+### 2.HashMap在什么情况下会扩容？
 
 
-#####3.hash值是如何计算的，为什么要这样计算？
+### 3.hash值是如何计算的，为什么要这样计算？
 
 
-#####4.HashMap是如何解决冲突的？还有哪些解决冲突的方法？
+### 4.HashMap是如何解决冲突的？还有哪些解决冲突的方法？
 
 
-#####5.put和get的过程是如何工作的？get的时间复杂度？
+### 5.put和get的过程是如何工作的？get的时间复杂度？
 
 
-#####6.HashMap和Hashtable有何关联、区别？
+### 6.HashMap和Hashtable有何关联、区别？
 
 
