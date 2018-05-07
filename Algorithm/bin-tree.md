@@ -1,4 +1,4 @@
-####1.二叉树的递归创建
+#### 1.二叉树的递归创建
 ```
 static class Node {
     String value;
@@ -28,7 +28,7 @@ public static void visitTreeNode(Node node) {
 }
 
 ```
-####2.二叉树的递归遍历
+#### 2.二叉树的递归遍历
 
 ```
 /**
@@ -82,7 +82,7 @@ public static void postOrder(Node root) {;
     }
 }
 ```
-####3.二叉树的非递归遍历
+#### 3.二叉树的非递归遍历
 ```
 /**
  * 非递归先序遍历，访问根节点，入栈根节点，访问左子树，出栈访问右子树
@@ -166,7 +166,7 @@ public static void notRecursionPostOrder(Node root) {
 
 
 
-####4.按层级遍历
+#### 4.按层级遍历
 ```
 /**
  * 按层级从上到下，从左到右遍历
