@@ -1,4 +1,4 @@
-####1、View的getWidth()和getMeasuredWidth()有什么区别吗？
+#### 1、View的getWidth()和getMeasuredWidth()有什么区别吗？
 
 ①在View的测量过程中，onMeasure()方法会调用setMeasuredDimension()方法为成员变量mMeasuredWidth、mMeasuredHeight赋值。
 ```
@@ -16,7 +16,7 @@ public final int getMeasuredWidth() {
 -  ```getMeasuredWidth() = mMeasuredWidth & MEASURED_SIZE_MASK```，而 ```getWidth() = mRight - mLeft```，在View的默认实现中它们的返回值是相等的。
 -  赋值时机不同，mMeasuredWidth在测量阶段中被赋值，而mRight、mLeft则是在布局阶段被赋值。
 
-####2、如何在onCreate中拿到View的宽度和高度？
+#### 2、如何在onCreate中拿到View的宽度和高度？
 从第一个问题的分析我们知道，只有View的相应的成员变量被赋值之后，才能拿到View的宽度和高度。而View的测量、布局过程和Activity的生命周期方法并不是同步执行的，所以在onCreate中并不能保证View已经完成了测量或者布局过程，如果没有完成，那拿到的将会是成员变量的默认初始化值0。
 
 **(1)主动调用View的measure()方法**
