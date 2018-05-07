@@ -57,4 +57,4 @@
   * [6.4.两个数-和-积](Funny/two-number.md)
   
 ## Part VII - Gradle
-  * [Gradle for android](Gradle/gradle.md)
+  * [Gradle for Android](Gradle/gradle.md)
