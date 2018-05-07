@@ -1,5 +1,5 @@
-###1.二分查找
-####非递归方式
+### 1.二分查找
+#### 非递归方式
 ```
 public int binSearch(int[] array, int value) {
     int start = 0;
@@ -18,7 +18,7 @@ public int binSearch(int[] array, int value) {
     return -1;
 }
 ```
-####递归实现
+#### 递归实现
 ```
 public int binSearch(int[] array, int start, int end, int value) {
     if (end < start) {
