@@ -1,6 +1,3 @@
-Java和Android知识点总结。
-
-
 # 摘要
 
 * [介绍](README.md)
