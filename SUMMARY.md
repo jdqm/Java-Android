@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-###Part I - Java
+## Part I - Java
 * [Java基础](Java/README.md)
   * [0.琐碎](Java/oop.md)
   * [1.多线程](Java/multithread.md)
@@ -11,7 +11,7 @@
   * [5.泛型](Java/generic-type.md)
   * [6.对象拷贝](Java/object-copy.md)
   * [引用分类](Java/reference.md)
-###Part II - Android  
+## Part II - Android  
 * [Android基础](Android/README.md)
   * [1.activity](Android/activity.md)
   * [2.service](Android/service.md)
@@ -24,7 +24,7 @@
   * [CrashHandler](Android/crash.md)
   * [内存泄漏](Android/memery-leank.md)
   * [实现倒计时的几种方式](Android/count-down.md)
-###Part III - 设计模式  
+## Part III - 设计模式  
 * [创建型](Pattern/README.md)
   * [1.strategy](Pattern/strategy.md)
   * [2.observer](Pattern/observer.md)
