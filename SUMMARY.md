@@ -56,5 +56,5 @@
   * [6.3.拿球](Funny/na-qiu.md)
   * [6.4.两个数-和-积](Funny/two-number.md)
   
-  ## Part VII - Gradle
+## Part VII - Gradle
   * [Gradle for android](Gradle/gradle.md)
