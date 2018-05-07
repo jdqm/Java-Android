@@ -1,4 +1,4 @@
-###1.TCP与UDP的区别
+### 1.TCP与UDP的区别
 ①基于连接与无连接（是指数据传输之前）
 ①TCP对资源的需求比UDP高
 ③UDP的程序结构简单，首部开销只有8个字节，而TCP有16个字节
@@ -8,7 +8,7 @@
 ⑦TCP的逻辑通信信道是全双工的可靠信道，而UDP则是不可靠信道
 ⑧TCP多用于传递少量数据，而UDP多用于传递大量数据
 
-###2.使用TCP进行Socket通信
+### 2.使用TCP进行Socket通信
 步骤：
 （1）服务端创建ServerSocket，需要传入一个端口号；
 （2）调用serverSocket.accept()监听（1）中设置的端口；
@@ -100,7 +100,7 @@ public class TCPClient {
 }
 ```
 
-###3.使用UDP进行Socket通信
+### 3.使用UDP进行Socket通信
 步骤：
 （1）服务端创建一个DatagramSocket，监听某个端口；
 （2）客户端创建一个DatagramPacket，包含数据，发送主机地址，端口；
