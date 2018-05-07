@@ -11,7 +11,7 @@
   * [1.4.集合框架](Java/collection.md)
   * [1.5.泛型](Java/generic-type.md)
   * [1.6.对象拷贝](Java/object-copy.md)
-  * [1.7引用分类](Java/reference.md)
+  * [1.7.引用分类](Java/reference.md)
   
 ## Part II - Android  
 * [Android基础](Android/README.md)
