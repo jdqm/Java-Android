@@ -48,7 +48,7 @@
   * [5.5.command](Pattern/command.md)
   * [5.6.abdapter](Pattern/abdapter.md)
   * [5.7.template-method](Pattern/template-method.md)
-  * [5.8.中介者模式](Pattern/Action/mediator.md)
+  * [5.8.mediator](Pattern/Action/mediator.md)
   
 ## Part VI- Just for fun
   * [6.1.烧绳子](Funny/rope.md)

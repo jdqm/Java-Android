@@ -6,6 +6,6 @@
 
 说的是具体的实现类不要调用模板抽象类里的方法，需要的时候模板方法自然会调用你。
 
-#####Java API中的一些模板方法
+##### Java API中的一些模板方法
 - 数组排序：Arrays.sort()
 - InputStream 的read()方法由子类实现，而read(byte[] b, int off, int len)
