@@ -57,7 +57,7 @@
   * [6.4.两个数-和-积](Funny/two-number.md)
   
 ## Part VII - Gradle
-  * [Gradle for Android](Gradle/gradle.md)
+  * [7.1.Gradle for Android](Gradle/gradle.md)
   
 ## Part VIII- JVM
   *[8.1.运行时数据区](JVM/runtime-data-area.md)
