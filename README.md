@@ -61,3 +61,4 @@
 
 ## Part VIII- JVM
   * [8.1.运行时数据区](JVM/runtime-data-area.md)
+  * [8.2.垃圾收集器与内存分配策略](JVM/collector-and-memery-strategy.md)
