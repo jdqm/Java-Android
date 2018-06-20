@@ -1,4 +1,7 @@
-1.使用WebView的页面是非常耗资源的，可以考虑放到一个独立的进程中，减少OOM发生的记录。
+1.使用WebView的页面是非常耗资源的，可以考虑放到一个独立的进程中，减少OOM发生的记录。四大组件可以在AndroidManifest.xml注册时声明process属性，例如
+```
+android:process=":webview"
+``
 
 2.apk瘦身
 分析apk压缩文件，到底是哪部分文件占用的存储空间比较大，可以使用解压工具(7-zip)打开apk文件或者在Android Studio中直接双击apk文件即可看到各种类型的文件所占用的存储空间，通常来说都是资源文件占用的比较多；
