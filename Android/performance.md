@@ -10,5 +10,7 @@ android:process=":webview"
 (3)第三步就是说有些图片可能很难替换了，那可以考虑压缩，比图tinypng等技术手段；
 (4)另外对于一些lib，或者classes.dex比较大的话，就不好一概而论了，看看是否能减少一些第三方库的依赖，或者so库是否需要导入多种cup架构（arm/x86...）
 
-3.使用 https://github.com/JakeWharton/hugo 打印方法的运行时参数、耗时等信息来更细粒度地分析代码；
+3.监控方法执行耗时
+
+ 使用 https://github.com/JakeWharton/hugo 打印方法的运行时参数、耗时等信息来更细粒度地分析代码；
 
