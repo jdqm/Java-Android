@@ -26,6 +26,8 @@
   * [2.8.CrashHandler](Android/crash.md)
   * [2.9.内存泄漏](Android/memery-leank.md)
   * [2.10.实现倒计时的几种方式](Android/count-down.md)
+  * [2.11.PMS](Android/pms.md)
+
   
 ## Part III - 计算机网络
   * [3.1.TCP-UDP](Internet/tcp-udp.md)
