@@ -5,3 +5,6 @@ AMS掌握了所有应用程序的创建、管理，所以他在framworks层有�
 - 四大组件的统一调度
 - 进程管理
 - 内存管理
+
+启动
+AMS的启动是在systemserver进程的startBootstrapServices方法中启动的，与PMS类似，但早与PMS。
