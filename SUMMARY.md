@@ -27,8 +27,8 @@
   * [2.9.内存泄漏](Android/memery-leank.md)
   * [2.10.实现倒计时的几种方式](Android/count-down.md)
   * [2.11.PMS](Android/pms.md)
-  * [2.11.AMS](Android/ams.md)
-  * [2.11.WMS](Android/wms.md)
+  * [2.12.AMS](Android/ams.md)
+  * [2.13.WMS](Android/wms.md)
   
 ## Part III - 计算机网络
   * [3.1.TCP-UDP](Internet/tcp-udp.md)
