@@ -1,8 +1,7 @@
 ActivityManagerService
 
-AMS掌握了所有应用程序的创建、管理，所以他在framworks层有着举足轻重的作用。AMS的主要功能就是通过Binder进程间通信与Client进程的ActivityManager通信。在创建Activity之后将其交由ActivityManager来管理。
+AMS掌握了所有应用程序的创建、管理，所以他在framworks层有着举足轻重的作用。AMS的主要功能就是通过Binder进程间通信与Client进程的ActivityManager通信。在创建Activity之后将其交由ActivityManager来管理。它的主要功能有以下3点：
 
-作者：NoOneDev
-链接：https://www.jianshu.com/p/3db3930b5a57
-來源：简书
-简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
+- 四大组件的统一调度
+- 进程管理
+- 内存管理
