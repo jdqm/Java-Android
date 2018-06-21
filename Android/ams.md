@@ -16,3 +16,23 @@ ActivityManagerService最主要的功能就是统一的管理者activity,service
 启动
 AMS的启动是在systemserver进程的startBootstrapServices方法中启动的，与PMS类似，但早与PMS。
 
+
+Activity的启动流程
+```
+Context#startActivity(Intent);
+```
+
+1. ContextWrapper 通过桥接模式，桥接到ContextImpl
+2. ContextImpl通过调用Intrumentation#execStartActivity()，在其内部调用ActivityManagerNative.getDefault()拿到AMS在客户端的代理对象，进而将逻辑转移到AMS中；
+3. AMS#startActivity()--->ActivityStackSupervisor#startActivityMayWait();
+4. 经过一系列的调用，最终调用到ActivityStackSupervisor#realStartActivityLocked()中，在这个方法中通过
+app.thread.scheduleLaunchActivity()，将逻辑切换到目标进程的ActivityThread中，具体是通过ActivityThread的内部类ApplicationThread来交互。
+5.ApplicationThread#scheduleLaunchActivity()，通过ActivityThread中的 mH发送消息来处理，处理逻辑在H这个Handler中；
+
+6. handleLaunchActivity()-->performLaunchActivity()，创建Activity实例，创建Application（如果之前没有创建），activity.attach(),创建Window(PhoneWindow)。
+
+7. mInstrumentation.callActivityOnCreate(activity, r.state)，activity的onCreate被回调。接着onStart也被回调。
+
+8. 接下来就是调用activity的onResume()，注意前一个Activity onPause后才启动的Activity才能onResume，所以前一个onPause不要做耗时操作，否则后一个Activity启动会变慢。
+
+
