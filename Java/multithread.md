@@ -219,14 +219,15 @@ class Account {
 ```
 class Test {
     public static void main(String... args) {
-        Account account = new Account("1111", 100);
+        Account account = new Account("1111", 0);
 
         new DrawThread("取钱者甲", account, 800).start();
         new DrawThread("取钱者乙", account, 800).start();
-        new DepositThread("存钱者甲", account, 1000).start();
-        new DepositThread("存钱者乙", account, 1000).start();
+        new DepositThread("存钱者甲", account, 800).start();
+        new DepositThread("存钱者乙", account, 800).start();
     }
 }
+
 ```
 
 
