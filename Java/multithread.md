@@ -120,7 +120,8 @@ public class DeadLockDemo {
 }
 ```
 
-5. 线程交互wait()/notify()/notifyAll()
+### 5.线程交互wait()/notify()/notifyAll()
+
 ```
 class DrawThread extends Thread {
 
@@ -141,7 +142,8 @@ class DrawThread extends Thread {
         }
     }
 }
-
+```
+```
 class DepositThread extends Thread {
     private Account account;
     private double depositAmount;
@@ -161,7 +163,8 @@ class DepositThread extends Thread {
         }
     }
 }
-
+```
+```
 class Account {
     private String accoutNo;
     private double balance;
@@ -212,7 +215,8 @@ class Account {
         }
     }
 }
-
+```
+```
 class Test {
     public static void main(String... args) {
         Account account = new Account("1111", 100);
@@ -224,6 +228,8 @@ class Test {
     }
 }
 ```
+
+
 
 
 
