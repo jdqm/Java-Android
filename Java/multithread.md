@@ -120,7 +120,110 @@ public class DeadLockDemo {
 }
 ```
 
+5. 线程交互wait()/notify()/notifyAll()
+```
+class DrawThread extends Thread {
 
+    private Account account;
+    private double drawAmount;
+
+    public DrawThread(String name, Account account, double drawAmount) {
+        super(name);
+        this.account = account;
+        this.drawAmount = drawAmount;
+    }
+
+    @Override
+    public void run() {
+        super.run();
+        for (int i = 0; i < 100; i++) {
+            account.draw(drawAmount);
+        }
+    }
+}
+
+class DepositThread extends Thread {
+    private Account account;
+    private double depositAmount;
+
+    public DepositThread(String name, Account account, double depositAmount) {
+        super(name);
+        this.account = account;
+        this.depositAmount = depositAmount;
+    }
+
+
+    @Override
+    public void run() {
+        super.run();
+        for (int i = 0; i < 100; i++) {
+            account.deposit(depositAmount);
+        }
+    }
+}
+
+class Account {
+    private String accoutNo;
+    private double balance;
+    private boolean flag;
+
+    public Account(String accoutNo, double balance) {
+        this.accoutNo = accoutNo;
+        this.balance = balance;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public synchronized void draw(double drawAmount) {
+        try {
+            if (!flag) {
+                wait();
+            } else {
+                System.out.println(Thread.currentThread().getName() + "取钱:" + drawAmount);
+                balance -= drawAmount;
+                System.out.println("余额:" + balance);
+                flag = false;
+                notifyAll();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized void deposit(double depositAmount) {
+        try {
+            if (flag) {
+                wait();
+            } else {
+                System.out.println(Thread.currentThread().getName() + "存钱:" + depositAmount);
+                balance += depositAmount;
+                System.out.println("余额:" + balance);
+                flag = true;
+                notifyAll();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class Test {
+    public static void main(String... args) {
+        Account account = new Account("1111", 100);
+
+        new DrawThread("取钱者甲", account, 800).start();
+        new DrawThread("取钱者乙", account, 800).start();
+        new DepositThread("存钱者甲", account, 1000).start();
+        new DepositThread("存钱者乙", account, 1000).start();
+    }
+}
+```
 
 
 
