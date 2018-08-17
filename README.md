@@ -26,6 +26,9 @@
   * [2.8.CrashHandler](Android/crash.md)
   * [2.9.内存泄漏](Android/memery-leank.md)
   * [2.10.实现倒计时的几种方式](Android/count-down.md)
+  * [2.11.PMS](Android/pms.md)
+  * [2.12.AMS](Android/ams.md)
+  * [2.13.WMS](Android/wms.md)
   
 ## Part III - 计算机网络
   * [3.1.TCP-UDP](Internet/tcp-udp.md)
@@ -58,9 +61,13 @@
   * [6.4.两个数-和-积](Funny/two-number.md)
   
 ## Part VII - Gradle
-  * [Gradle for Android](Gradle/gradle.md)
-
+  * [7.1.Gradle for Android](Gradle/gradle.md)
+  
 ## Part VIII- JVM
   * [8.1.运行时数据区](JVM/runtime-data-area.md)
   * [8.2.垃圾收集器与内存分配策略](JVM/collector-and-memery-strategy.md)
   * [8.3.类加载机制](JVM/classloader.md)
+  * [8.4.Java内存模型与线程](JVM/memory-model-thread.md)
+  * [8.5.线程安全与锁安全](JVM/thread-lock.md)
+## Part IX 开源框架
+  * [9.1.Retrofit](osp/retrofit.md)
