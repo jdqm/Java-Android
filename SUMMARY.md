@@ -67,5 +67,7 @@
   * [8.1.运行时数据区](JVM/runtime-data-area.md)
   * [8.2.垃圾收集器与内存分配策略](JVM/collector-and-memery-strategy.md)
   * [8.3.类加载机制](JVM/classloader.md)
+  * [8.4.Java内存模型与线程](JVM/memory-model-thread.md)
+  * [8.5.线程安全与锁安全](JVM/thread-lock.md)
 ## Part IX 开源框架
   * [9.1.Retrofit](osp/retrofit.md)
